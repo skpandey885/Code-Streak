@@ -1,0 +1,47 @@
+// Question - https://leetcode.com/problems/island-perimeter/
+
+// TIME COMPLEXITY: O(N)
+
+    static int islandPerimeter(int[][] grid) {
+        int degree=0;
+        int count=0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[i].length;j++){ if(grid[i][j]==1) count++;}}
+
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[i].length;j++){
+                if(grid[i][j]==1){
+                    {
+                    degree+=findDegree(grid,i,j);
+
+                    }
+                }
+            }
+        }
+
+
+return (4*count-degree);
+    }
+
+    static int findDegree(int grid[][],int i,int j){
+int degree=0;
+        if(i+1<grid.length){
+          if(grid[i+1][j]==1)
+              degree++;
+        }
+        if(i>0){
+            if(grid[i-1][j]==1)
+                degree++;
+        }
+
+        if(j+1<grid[i].length){
+            if(grid[i][j+1]==1)
+                degree++;
+        }
+        if(j>0){
+            if(grid[i][j-1]==1)
+                degree++;
+        }
+        return degree;
+
+    }
