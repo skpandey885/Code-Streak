@@ -1,6 +1,6 @@
 // Question - https://leetcode.com/problems/island-perimeter/
 
-// TIME COMPLEXITY: O(N)
+// TIME COMPLEXITY: O(N^2)
 
     static int islandPerimeter(int[][] grid) {
         int degree=0;
