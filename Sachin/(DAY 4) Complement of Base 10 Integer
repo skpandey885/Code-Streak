@@ -30,7 +30,7 @@ class Solution {
             power++;
         }
         
-        return number-n;
+  return number-n;
         
         
         
