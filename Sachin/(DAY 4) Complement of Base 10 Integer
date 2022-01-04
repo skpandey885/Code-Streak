@@ -1,0 +1,34 @@
+class Solution {
+    public int bitwiseComplement(int n) {
+        
+        
+// TIME COMPLEXITY: O(P) , P is the length of Binary of Integer
+//         String s=Integer.toBinaryString(n);
+//         String ans="";
+        
+//         for(int i=0;i<s.length();i++)
+//             if(s.charAt(i)=='1')
+//                 ans+="0";
+//              else
+//             ans+="1";
+        
+//         int num=Integer.parseInt(ans,2);        
+//         return num; 
+      
+        
+        
+   // Time Complexity: O(32) or O(1)   
+        int number=0;
+        int power=0;
+        
+        while(number<n){
+            number+=Math.pow(2,power);
+            power++;
+        }
+        
+        return number-n;
+        
+        
+        
+    }
+}
