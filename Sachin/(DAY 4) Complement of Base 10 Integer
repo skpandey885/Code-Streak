@@ -6,7 +6,8 @@ class Solution {
     public int bitwiseComplement(int n) {
         
         
-// TIME COMPLEXITY: O(P) , P is the length of Binary of Integer
+// TIME COMPLEXITY: O(32) or O(1)
+
 //         String s=Integer.toBinaryString(n);
 //         String ans="";
         
