@@ -17,4 +17,5 @@ DAY 6 - Intersection of Two Arrays II<br>
 DAY 6 - Car Pooling<br>
 <hr>
 DAY 7 - LinkedList Random Node<br>
-
+DAY 7 - Maximum Difference Between Increasing Elements<br>
+<hr>
