@@ -1,0 +1,41 @@
+// https://leetcode.com/problems/linked-list-random-node/
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    
+    // TIME COMPLEXITY: O(N) .. N is the size of the LinkedList.
+   ListNode head=null;
+    
+    public Solution(ListNode head) {
+    this.head=head;
+}
+    
+    public int getRandom() {
+        ListNode x=head;
+        int ans=0;
+  
+         for(int i=1; x!=null ;i++){
+            if((int)(Math.random()*i)==(i-1))
+               
+                ans=x.val;
+         x=x.next;
+    }
+        return  ans;
+        
+    }
+}
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(head);
+ * int param_1 = obj.getRandom();
+ */
