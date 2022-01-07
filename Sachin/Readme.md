@@ -13,3 +13,8 @@ DAY 4 - Pairs of Songs With Total Durations Divisible by 60<br>
 DAY 5 - Akash and Grid<br>
 DAY 5 - Merge Sorted Array<br>
 <hr>
+DAY 6 - Intersection of Two Arrays II<br>
+DAY 6 - Car Pooling<br>
+<hr>
+DAY 7 - LinkedList Random Node<br>
+
