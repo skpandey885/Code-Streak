@@ -1,0 +1,23 @@
+// https://leetcode.com/problems/plus-one/
+
+
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int n=digits.size();
+            int i=n-1;
+            while(digits[i]==9 && i>0){
+                digits[i]=0;
+                i--;
+            }
+            if(digits[i]!=9)
+                digits[i]+=1;
+
+            else{
+                vector<int> v(n+1,0);
+                v[0]=1;
+                return v;
+            } 
+        return digits;
+    }
+};
