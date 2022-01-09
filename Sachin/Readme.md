@@ -19,3 +19,6 @@ DAY 6 - Car Pooling<br>
 DAY 7 - LinkedList Random Node<br>
 DAY 7 - Maximum Difference Between Increasing Elements<br>
 <hr>
+DAY 8 - Cherry Pickup II
+<hr>
+DAY 9 - Robot Bounded In Circle
