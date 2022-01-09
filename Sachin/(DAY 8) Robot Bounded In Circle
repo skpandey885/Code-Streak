@@ -1,0 +1,51 @@
+// QUESTION LINK: https://leetcode.com/problems/robot-bounded-in-circle/
+
+class Solution {
+    public boolean isRobotBounded(String instructions) {
+        
+        char[] inst =  instructions.toCharArray();
+        int x = 0;
+        int y = 0; 
+        boolean origin;
+        
+        int l_count = 0;
+        int r_count = 0;
+        char[] l_face = {'N','W','S','E'};
+        char[] r_face = {'N', 'E', 'S', 'W'};
+        char face ='N'; 
+ 
+        
+        
+        for (char ch: inst) {
+            if (ch == 'G') {
+                if (face == 'N') {
+                    y++;
+                }
+                if (face == 'W') {
+                    x--;
+                }
+                if (face == 'E') {
+                    x++;
+                }
+                if (face == 'S') {
+                    y--;
+                }
+            } else if (ch == 'L') {
+                l_count++;
+                r_count--;
+                face = l_face[Math.abs(l_count%4)];
+            } else if (ch == 'R') {
+                r_count++;
+                l_count--;
+                face = r_face[Math.abs(r_count%4)];
+            }
+        }
+        if (x == 0 && y == 0) {
+            return true;
+        }
+        if (face == 'N') {
+            return false; 
+        }
+        return true; 
+    }
+}
