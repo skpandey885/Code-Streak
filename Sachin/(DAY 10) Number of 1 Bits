@@ -1,0 +1,19 @@
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        
+      int j=0;
+
+        
+        while(n!=0){
+            int val=n & 1;
+            if(val==1)
+                j++;
+          
+            n=n>>>1;
+      
+        }
+        
+        return j;
+    }
+}
