@@ -21,4 +21,8 @@ DAY 7 - Maximum Difference Between Increasing Elements<br>
 <hr>
 DAY 8 - Cherry Pickup II<br>
 <hr>
-DAY 9 - Robot Bounded In Circle
+DAY 9 - Robot Bounded In Circle<br>
+<hr>
+DAY 10 - Add Binary<br>
+DAY 10 - Number of 1 Bits
+<hr>
