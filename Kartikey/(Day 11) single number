@@ -1,0 +1,21 @@
+// https://leetcode.com/problems/single-number/
+
+
+
+
+
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans = nums[0];
+        for(int i=1;i<nums.size();i++)
+        {
+            ans^=nums[i];  
+            /*checking xor of every element
+             {2,2,1} ke array mei pahle 0th element ko 1st element se compare krege
+            2 aur 2 ka xor 0 ayega then 0 ko 1 se , uska xor 1 ayega . vahi ans hai,,, ez */
+        }
+        return ans;
+    }
+}; 
