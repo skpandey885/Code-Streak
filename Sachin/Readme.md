@@ -24,5 +24,10 @@ DAY 8 - Cherry Pickup II<br>
 DAY 9 - Robot Bounded In Circle<br>
 <hr>
 DAY 10 - Add Binary<br>
-DAY 10 - Number of 1 Bits
+DAY 10 - Number of 1 Bits<br>
 <hr>
+DAY 11 - Sum of Root To Leaf Binary Numbers<br>
+<hr>
+DAY 12 - Insert into BST<br>
+<hr>
+DAY 13 - Minimum Number of Arrows to Burst Balloons<br>
