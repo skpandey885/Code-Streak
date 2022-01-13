@@ -1,4 +1,6 @@
-class Solution {
+// QUESTION LINK: https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/ 
+ 
+ class Solution {
     public int findMinArrowShots(int[][] points) {
    if (points.length == 0) 
             return 0;
