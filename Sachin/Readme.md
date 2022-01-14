@@ -31,3 +31,6 @@ DAY 11 - Sum of Root To Leaf Binary Numbers<br>
 DAY 12 - Insert into BST<br>
 <hr>
 DAY 13 - Minimum Number of Arrows to Burst Balloons<br>
+<hr>
+DAY 14 - String to Integer (atoi)<br>
+DAY 14 - Vedant and his hidden Array<br>
