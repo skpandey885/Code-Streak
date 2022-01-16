@@ -1,0 +1,181 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+ class FastReader 
+    { 
+        BufferedReader br; 
+        StringTokenizer st; 
+
+        public FastReader() 
+        { 
+            br = new BufferedReader(new
+                     InputStreamReader(System.in)); 
+        } 
+
+        String next() 
+        { 
+            while (st == null || !st.hasMoreElements()) 
+            { 
+                try
+                { 
+                    st = new StringTokenizer(br.readLine()); 
+                } 
+                catch (IOException  e) 
+                { 
+                    e.printStackTrace(); 
+                } 
+            } 
+            return st.nextToken(); 
+        } 
+
+        int nextInt() 
+        { 
+            return Integer.parseInt(next()); 
+        } 
+
+        long nextLong() 
+        { 
+            return Long.parseLong(next()); 
+        } 
+
+        double nextDouble() 
+        { 
+            return Double.parseDouble(next()); 
+        } 
+
+        String nextLine() 
+        { 
+            String str = ""; 
+            try
+            { 
+                str = br.readLine(); 
+            } 
+            catch (IOException e) 
+            { 
+                e.printStackTrace(); 
+            } 
+            return str; 
+        } 
+    } 
+
+
+
+class Codechef
+{
+    static int count(String s){
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='0')
+            count++;
+        }
+        
+        return count;
+    }
+    
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	
+	try{
+	    OutputStream outputStream =System.out;
+        PrintWriter out =new PrintWriter(outputStream);
+        FastReader input =new FastReader();
+
+       int t=input.nextInt();
+   
+    while(t-->0){
+      int n=input.nextInt();
+      int m=input.nextInt();
+       
+       ArrayList<String> arr=new ArrayList<>();
+       
+       for(int i=0;i<n;i++){
+           String s=input.next();
+           arr.add(s);
+       }
+       
+       Collections.sort(arr,new NumberComparator());
+       
+       String binary="";
+     
+       for(String i: arr)
+         binary+=i; 
+    
+      long zeros=0,ans=0;
+    for(int i=binary.length()-1;i>=0;i--){
+        
+        if(binary.charAt(i)=='0')
+         zeros++;
+         
+         if(zeros>0){
+         if(binary.charAt(i)=='1')
+         ans+=zeros;
+         }
+         
+    }
+   
+    
+
+    
+    System.out.println(ans);
+    
+     
+    
+    
+    }
+     
+
+
+
+
+
+
+	    
+	    
+	}catch(Exception e){
+	    return;
+	}
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+class NumberComparator implements Comparator<String>
+{
+
+	public int compare(String o1, String o2) {
+		// TODO Auto-generated method stub
+		int c1=0;
+		int c2=0;
+		for(int i=0;i<o1.length();i++)
+		{
+			if(o1.charAt(i)=='1')
+				c1++;
+			if(o2.charAt(i)=='1')
+				c2++;
+			
+		}
+		if(c1<c2)
+			return -1;
+		else if(c1>c2)
+			return 1;
+		else
+			return 0;
+	}
+	
+}
