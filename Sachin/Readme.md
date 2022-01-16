@@ -34,3 +34,7 @@ DAY 13 - Minimum Number of Arrows to Burst Balloons<br>
 <hr>
 DAY 14 - String to Integer (atoi)<br>
 DAY 14 - Vedant and his hidden Array<br>
+<hr>
+DAY 15 - Jump Game IV<br>
+<hr>
+DAY 16 - Maximize Distance to Closest Person<br>
