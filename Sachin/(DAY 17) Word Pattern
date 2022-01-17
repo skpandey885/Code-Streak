@@ -1,0 +1,31 @@
+// QUESTION LINK: https://leetcode.com/problems/word-pattern/
+
+
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+    
+         s=s.trim();
+        
+        char ch[]=pattern.toCharArray();
+        
+        String arr[]=s.split("\\s+");
+        
+        Map<Character,String> res=new HashMap<>();
+    
+        if(arr.length!=ch.length)
+            return false;
+        
+        for(int i=0;i<arr.length;i++){
+            if(res.containsKey(ch[i])==false && res.containsValue(arr[i])==false)
+                res.put(ch[i],arr[i]);
+            
+            if(res.containsKey(ch[i])==false && res.containsValue(arr[i])  || !res.get(ch[i]).equals(arr[i]) )
+                return false;
+        }
+            
+        return true;
+        
+        
+        
+    }
+}
