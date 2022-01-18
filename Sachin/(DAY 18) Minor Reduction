@@ -1,0 +1,53 @@
+// QUESTION LINK: https://codeforces.com/contest/1626/problem/B
+
+
+
+
+import java.io.*;
+import java.util.*;
+ 
+public class File {
+	public static void main (String[] args) {
+	
+	Scanner input=new Scanner(System.in);
+	
+		int t=input.nextInt();
+        while (t-->0) {
+        
+         String str=input.next();
+          int n=str.length();
+          boolean found=false;
+ 
+         for(int i=n-2;i>=0;i--){
+          
+          int x=(str.charAt(i)-'0')+(str.charAt(i+1)-'0');
+ 
+          if(x>=10){
+             
+            int y=x/10;
+            x=x%10;
+            String temp=str.substring(0,i);
+            temp+=String.valueOf(y);
+            temp+=String.valueOf(x);
+            temp+=str.substring(i+2);
+            
+            found=true;
+            System.out.println(temp);
+          break;
+}
+}
+ 
+if(!found){
+ 
+   int sum=(str.charAt(0)-'0')+(str.charAt(1)-'0');
+   String temp=String.valueOf(sum);
+   temp+=str.substring(2);
+   System.out.println(temp);
+}
+
+     }
+}
+        
+        
+	
+}
