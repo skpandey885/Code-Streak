@@ -1,0 +1,68 @@
+// QUESTION LINK: https://leetcode.com/problems/linked-list-cycle-ii/
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        
+        // TC: O(N)
+        
+        
+    while(head!=null){
+        
+        if(head.val==Integer.MAX_VALUE) return head;
+        
+        head.val=Integer.MAX_VALUE;
+        head=head.next;
+    }
+        return null;
+        
+        
+        
+        
+        
+        
+        
+//             Set<ListNode> ss=new HashSet<>();
+//         return cycleCheck(head,ss);
+  
+    }
+  
+    
+    
+// MY APPROACH TC: O(N)            SC:O(N)
+    
+//  ListNode cycleCheck(ListNode head,  Set<ListNode> ss){
+     
+//      ListNode temp=head;
+//      int t=0;
+//      while (temp!=null){
+//          if(!ss.contains(temp)){
+//              ss.add(temp);
+//              temp=temp.next;
+//          }else{
+//              return temp;
+//          }
+         
+//      }
+  
+//      return null;
+  
+//  }   
+    
+    
+    
+    
+    
+}
