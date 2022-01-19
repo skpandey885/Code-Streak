@@ -1,0 +1,18 @@
+//  https://leetcode.com/problems/valid-palindrome/
+
+
+
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string res="";
+      for(char &c:s){
+          if(isalpha(c) || isdigit(c))res+=c;
+      }
+        transform(res.begin(),res.end(),res.begin(),::tolower);
+        string temp=res;
+        reverse(temp.begin(),temp.end());
+        return res.compare(temp)==0;
+    }
+};
