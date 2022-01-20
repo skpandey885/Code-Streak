@@ -38,3 +38,13 @@ DAY 14 - Vedant and his hidden Array<br>
 DAY 15 - Jump Game IV<br>
 <hr>
 DAY 16 - Maximize Distance to Closest Person<br>
+<hr>
+DAY 17 - Equidistant Letters<br>
+DAY 17 - Word Pattern<br>
+<hr>
+DAY 18 - Can place flowers<br>
+DAY 18 - Minor Reduction<br>
+<hr>
+DAY 19 - Linked List Cycle II<br>
+<hr>
+DAY 20 - Koko Eating Bananas<br>
