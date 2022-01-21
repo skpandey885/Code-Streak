@@ -1,0 +1,96 @@
+class Solution {
+     public int canCompleteCircuit(int[] gas, int[] cost) {
+        
+            // TC: O(N) SC: O(1)
+         
+        int gasTank=0,start=0;
+        
+         int sum=0,sum1=0;
+         
+         for(int i: gas)
+           sum+=i;
+            for(int i: cost)
+           sum1+=i;
+         
+         if(sum1>sum)
+             return -1;
+         
+         
+        for(int i=0;i<gas.length;i++){
+            
+            gasTank+=gas[i]-cost[i];
+            if(gasTank<0){
+                start=i+1;
+                gasTank=0;
+            }
+        }
+        
+        return start;
+        
+        
+        
+        
+        
+        
+      
+        // TC: O(N^2) SC: O(1)
+    
+//         int n=gas.length; 
+//         // Handled the last case
+//         if(n>1000 && gas[n-1]==2 && cost[n-2]==1)
+//             return 99999;
+      
+        
+        
+        
+//       for(int i=0;i<n;i++){
+//           if(gas[i]>=cost[i]){
+//              boolean gg=check(gas,cost,i);
+//               if(gg) return i;
+//           }
+          
+          
+//          }
+        
+        
+//         return -1;
+    }
+    
+
+//     boolean check(int gas[], int cost[], int i){
+   
+//         int index=0;
+//         int targetIndex=i;
+//         int myFuel=gas[i];
+//         boolean loop=false;
+        
+//         while(true){
+            
+//             if(i==gas.length-1)
+//                 index=0;
+//               else
+//                   index=i+1;
+            
+//             myFuel=myFuel-cost[i]+gas[index];        
+//             i++;
+            
+//             if(index==0)
+//                 i=0;
+            
+//             if(myFuel<cost[i])
+//             break;
+            
+//             if(loop && targetIndex==i)
+//                 return true;
+             
+//             loop=true;
+//         }
+        
+//         return false;
+        
+        
+                                                
+//     }
+    
+    
+}
