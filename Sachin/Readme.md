@@ -48,3 +48,7 @@ DAY 18 - Minor Reduction<br>
 DAY 19 - Linked List Cycle II<br>
 <hr>
 DAY 20 - Koko Eating Bananas<br>
+<hr>
+DAY 21 - Gas Station<br>
+<hr>
+DAY 22 - Download more RAM
