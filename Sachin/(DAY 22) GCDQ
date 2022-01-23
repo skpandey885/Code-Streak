@@ -1,0 +1,136 @@
+// QUESTION LINK https://www.codechef.com/problems/GCDQ/
+
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+ class FastReader 
+    { 
+        BufferedReader br; 
+        StringTokenizer st; 
+
+        public FastReader() 
+        { 
+            br = new BufferedReader(new
+                     InputStreamReader(System.in)); 
+        } 
+
+        String next() 
+        { 
+            while (st == null || !st.hasMoreElements()) 
+            { 
+                try
+                { 
+                    st = new StringTokenizer(br.readLine()); 
+                } 
+                catch (IOException  e) 
+                { 
+                    e.printStackTrace(); 
+                } 
+            } 
+            return st.nextToken(); 
+        } 
+
+        int nextInt() 
+        { 
+            return Integer.parseInt(next()); 
+        } 
+
+        long nextLong() 
+        { 
+            return Long.parseLong(next()); 
+        } 
+
+        double nextDouble() 
+        { 
+            return Double.parseDouble(next()); 
+        } 
+
+        String nextLine() 
+        { 
+            String str = ""; 
+            try
+            { 
+                str = br.readLine(); 
+            } 
+            catch (IOException e) 
+            { 
+                e.printStackTrace(); 
+            } 
+            return str; 
+        } 
+    } 
+
+
+
+class Codechef
+{
+     public static int gcd(int a, int b)
+    {
+        if (a == 0)
+            return b;
+          
+        return gcd(b%a, a);
+    }
+    
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	
+	try{
+	    OutputStream outputStream =System.out;
+        PrintWriter out =new PrintWriter(outputStream);
+        FastReader input =new FastReader();
+
+       int t=input.nextInt();
+   
+               while(t-->0) {
+         int n=input.nextInt();
+         int q=input.nextInt();
+         int arr[]=new int[n+1];
+
+         for(int i=1;i<=n;i++)
+         arr[i]=input.nextInt();
+
+        int forward[]=new int[n+2];
+        int backward[]=new int[n+2];
+        
+         
+        for(int i=1;i<=n;i++){
+          forward[i]=gcd(forward[i-1],arr[i]);
+        }
+
+        for(int i=n;i>=0;i--){
+          backward[i]=gcd(arr[i],backward[i+1]);
+        }
+
+      
+
+
+
+       for(int i=0;i<q;i++){
+        int l=input.nextInt();
+        int r=input.nextInt();
+         
+        int ff=gcd(forward[l-1], backward[r+1]);
+        System.out.println(ff);
+      
+
+       }
+
+
+
+
+        }
+   
+	}catch(Exception e){
+	    return;
+	}
+	
+	
+	}
+}
