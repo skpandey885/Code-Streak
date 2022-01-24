@@ -54,6 +54,6 @@ DAY 21 - Gas Station<br>
 DAY 22 - Download more RAM
 <br><hr>
 DAY 23 - Sequential Digits<br><hr>
-<br><hr>
+
 DAY 24 - Detect Capital<br>
 DAY 25 - GCD Arrays<br><hr>
