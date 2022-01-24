@@ -1,0 +1,51 @@
+// https://codeforces.com/contest/1629/problem/B
+
+
+
+
+import java.util.*;
+ import java.io.*;
+public class Cp {
+ 
+  public static void main(String[] args) {
+      
+    Scanner input=new Scanner(System.in);
+     
+    int t=input.nextInt();
+     
+    while (t-->0) {
+     int l=input.nextInt();
+     int r=input.nextInt();
+     int k=input.nextInt();
+ 
+    int odds=countOdd(l, r);
+ 
+ 
+ 
+   if(l==r && l>1)
+    System.out.println("YES");
+    else if(k>=odds)
+     System.out.println("YES");
+    else
+    System.out.println("NO");
+ 
+ 
+ 
+ 
+    }
+  }
+ 
+  static int countOdd(int L, int R)
+    {
+        int N = (R - L) / 2;
+ 
+        // if either R or L is odd
+        if (R % 2 != 0 || L % 2 != 0)
+            N++;
+ 
+        return N;
+    }
+ 
+ 
+ 
+}
