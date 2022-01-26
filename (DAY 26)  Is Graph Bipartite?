@@ -1,0 +1,46 @@
+class Solution {
+    public boolean isBipartite(int[][] graph) {
+    
+        // TC: O(V+E)
+      
+        int V=graph.length;
+        
+        int color[]=new int[V];
+        Arrays.fill(color,-1);
+         
+         for(int i=0;i<V;i++){
+            if(color[i]==-1){
+                if(bipartite2(graph,color,i)==false)
+                    return false;
+                
+            }
+        }
+        
+        return true;
+ }
+    
+    
+    
+    
+   boolean bipartite2(int graph[][], int[] color, int i) {
+        if(color[i]==-1)
+            color[i]=0;
+
+       int mark[]=new int[graph[i].length];
+       for(int k=0;k<graph[i].length;k++)
+           mark[k]=graph[i][k];
+       
+    for(int temp: mark){
+        if(color[temp]==-1){
+            color[temp]=color[i]^1;
+            if(!bipartite2(graph,color,temp))
+           return false;
+        }else if(color[i]==color[temp]) {
+            return false;
+        }
+    }
+
+
+    return true;
+ }
+}
