@@ -1,0 +1,48 @@
+// QUESTION LINK : https://leetcode.com/problems/can-make-palindrome-from-substring/
+
+class Solution {
+    public List<Boolean> canMakePaliQueries(String s, int[][] queries) {
+     
+        
+         int n=s.length();
+         List<Boolean> answers=new ArrayList<>();
+        
+        int arr[][]=new int[26][n+1];
+
+        for(int i=0;i<n;i++)
+        {
+            char c=s.charAt(i);
+            arr[c-'a'][i+1]++;
+         }
+        
+        for(int i=0;i<26;i++){
+            for(int j=1;j<n+1;j++){
+                arr[i][j]=arr[i][j]+arr[i][j-1];
+            }
+        }
+        
+        for(int kk=0;kk<queries.length;kk++){
+             int l=queries[kk][0];
+             int r=queries[kk][1];
+             int k=(l-r+1)%2==0?(2*queries[kk][2]):(2*queries[kk][2]+1);
+            
+            int mark=0;
+            
+            for(int i=0;i<26;i++){
+                int curr=arr[i][r+1]-arr[i][l];
+                
+                if(curr%2!=0)
+                    mark++;
+            }
+            
+            answers.add(mark<=k);
+    
+        }
+        
+        
+        
+        
+        return answers;
+   
+    }
+}
