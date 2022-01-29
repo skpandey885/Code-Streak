@@ -1,0 +1,60 @@
+// https://codeforces.com/problemset/problem/69/A
+
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+
+int main() {
+
+      #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt" , "w", stdout);
+      #endif
+   
+   
+
+
+       ll n;
+       ll sumx = 0, sumy = 0, sumz = 0;
+       cin >> n;
+       while(n--){
+        ll x, y, z;
+        
+        cin >> x >> y >> z;
+        
+        
+        sumx += x;
+        sumy += y;
+        sumz += z;
+        
+        
+         
+           
+                                                                    
+                
+              
+
+        
+    }
+    if(sumx == 0 && sumy==0 && sumz == 0){
+        cout << "YES" << endl;
+    }
+    else{
+        cout << "NO" << endl;
+    }
+    return 0;
+
+
+
+
+       }
+
+
+
+
+ 
+
+
+
