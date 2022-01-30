@@ -1,0 +1,34 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1/#   
+   
+   static int spanningTree(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj)
+    {
+        int sum=0;
+        PriorityQueue<Pair2> pq=new PriorityQueue<>();
+
+        pq.add(new Pair2(-1,0,0));
+
+        boolean visited[]=new boolean[V];
+
+        while(pq.size()>0){
+            Pair2 curr=pq.remove();
+
+            if(visited[curr.v])
+                continue;
+
+            visited[curr.v]=true;
+
+
+                ArrayList<ArrayList<Integer>> ss=adj.get(curr.v);
+                for (ArrayList temp: ss ){
+                    Pair2 p=new Pair2(curr.v,(int) temp.get(0),(int) temp.get(1));
+                    pq.add(p);
+                }
+
+
+            sum+=curr.wt;
+
+        }
+
+        return sum;
+
+    }
