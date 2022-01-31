@@ -60,3 +60,7 @@ DAY 24 - GCD Arrays<br><hr>
 DAY 25 - Valid Mountain Array<br><hr>
 DAY 26 - Is Graph Bipartite? <br>
 DAY 26 - All Elements in Two Binary Search Trees<br><hr>
+DAY 27 - Average of three<br>
+DAY 27 - Maximum XOR of two numbers in an array<br><hr>
+DAY 28 - Can Make Palindrome from Substring<br>
+DAY 28 - Design Add and Search Words Data Structure<br><hr>
