@@ -1,0 +1,46 @@
+// QUESTION LINK : https://codeforces.com/contest/1632/problem/B
+ 
+/**
+ * Program
+ */
+import java.util.*;
+public class Program {
+ 
+    public static void main(String[] args) {
+        
+        Scanner input=new Scanner(System.in);
+        int t=input.nextInt();
+        while(t-->0){
+            int n=input.nextInt();
+         boolean firstFound=false;
+           int i=n-1;
+          while (!check(i)) {
+              System.out.print(i+" ");
+            i--;
+          }
+          
+   System.out.print(i+" ");
+   System.out.print(0+" ");
+   i--;
+ 
+   while(i>=1){
+       System.out.print(i+" ");
+       i--;
+   }
+              
+    System.out.println();
+ 
+ 
+            }
+ 
+ 
+}
+        
+ 
+ 
+        static boolean check(int n){
+          int x=(n & (n-1));
+          return x==0;  
+        }   
+     
+    }
