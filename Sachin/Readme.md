@@ -56,4 +56,7 @@ DAY 22 - Download more RAM
 DAY 23 - Sequential Digits<br><hr>
 
 DAY 24 - Detect Capital<br>
-DAY 25 - GCD Arrays<br><hr>
+DAY 24 - GCD Arrays<br><hr>
+DAY 25 - Valid Mountain Array<br><hr>
+DAY 26 - Is Graph Bipartite? <br>
+DAY 26 - All Elements in Two Binary Search Trees<br><hr>
