@@ -1,0 +1,20 @@
+// QUESTION LINK: https://leetcode.com/problems/richest-customer-wealth/
+
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        
+        // TC: O(m*n)   SC: O(1)
+        
+        
+        int max=0;
+        for(int arr[]: accounts){
+            int currSum=0;
+            for(int i=0;i<arr.length;i++){
+                currSum+=arr[i];
+            }
+            max=Math.max(max,currSum);
+        }
+        
+        return max;
+    }
+}
