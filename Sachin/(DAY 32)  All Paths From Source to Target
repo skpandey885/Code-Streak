@@ -1,0 +1,30 @@
+//https://leetcode.com/problems/all-paths-from-source-to-target/
+
+class Solution {
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        
+        // TC: O(V+E) SC: O(N)
+        
+        List<List<Integer>> result=new ArrayList<>();
+        List<Integer> ss =new ArrayList<>();
+        dfs(graph,(graph.length),0,ss,result);
+        return result;
+    }
+    
+void dfs(int graph[][],int v, int i, List<Integer> ss,   List<List<Integer>> result){
+               ss.add(i);
+        
+     if(i==(graph.length-1))
+       {    
+         result.add(new ArrayList<>(ss)); 
+          ss.remove(ss.size()-1); 
+           return;
+       }
+             
+        for(int curr: graph[i])
+            dfs(graph,v,curr,ss,result); 
+            
+         ss.remove(ss.size()-1);        
+    }
+    
+}
