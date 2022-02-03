@@ -1,0 +1,49 @@
+// QUESTION LINK: https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    
+PriorityQueue<Integer> ans=new PriorityQueue<>();
+    
+    public int findSecondMinimumValue(TreeNode root) {
+        traverse(root);
+        
+        if(ans.size()==1)
+            return -1;
+    
+        int num=ans.poll();
+        
+        while( ans.size()>0 &&  ans.peek()==num) ans.poll();
+        
+        if(ans.size()<1)
+            return -1;
+        
+        return ans.peek();
+        
+    }
+    
+    void traverse(TreeNode root){
+        if(root==null) return;
+        
+        traverse(root.left);
+        traverse(root.right);
+        ans.add(root.val);
+        
+        
+    }
+}
