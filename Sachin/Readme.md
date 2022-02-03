@@ -64,3 +64,16 @@ DAY 27 - Average of three<br>
 DAY 27 - Maximum XOR of two numbers in an array<br><hr>
 DAY 28 - Can Make Palindrome from Substring<br>
 DAY 28 - Design Add and Search Words Data Structure<br><hr>
+DAY 29 - Largest Rectangle in Histogram<br><hr>
+DAY 30 - Implementing Dijkstra Algorithm<br>
+DAY 30 - Minimum Spanning Tree<br>
+<hr>
+DAY 31 - ABC<br>
+DAY 31 - Richest Customer wealth<br><hr>
+DAY 31 - Roof Construction<br>
+DAY 32 - All Paths From Source to Target<br>
+DAY 32 - Minimum Number of Vertices to Reach All Nodes<br><hr>
+DAY 33 - Max Area of Island<br><hr>
+DAY 34 - Find Next Greater Element<br><hr>
+
+
