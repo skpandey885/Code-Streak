@@ -74,6 +74,6 @@ DAY 31 - Roof Construction<br>
 DAY 32 - All Paths From Source to Target<br>
 DAY 32 - Minimum Number of Vertices to Reach All Nodes<br><hr>
 DAY 33 - Max Area of Island<br><hr>
-DAY 34 - Find Next Greater Element<br><hr>
-
+DAY 34 - Find Next Greater Element<br>
+DAY 34 - Second minimum node in a binary tree<br><hr>
 
