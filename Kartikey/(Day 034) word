@@ -1,0 +1,96 @@
+// https://codeforces.com/problemset/problem/59/A
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define fr for(int i =0; i<n; i++)
+
+//switch on ->1
+//switch off ->0
+ 
+
+int main() {
+
+      #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt" , "w", stdout);
+      #endif
+        
+        string s;
+        cin >> s;
+        char temp;
+        ll lowerCount =0;
+        ll upperCount = 0;
+        for(int i=0; i< s.size(); i++){
+            
+            
+            
+            if(s[i]  >= 65 && s[i] <= 90 ){
+               upperCount++;
+                
+            }
+            if(s[i] >=97 && s[i] <= 122){
+               lowerCount++;
+            }
+           
+            
+            
+        }
+        
+        if(upperCount > lowerCount){
+             transform(s.begin(), s.end(), s.begin(), ::toupper);
+    cout << s << endl;
+  
+    
+        }
+    if( lowerCount >= upperCount){
+     
+
+    
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    cout << s << endl;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+       
+       
+        }
+    
+        
+   
+   
+   
+
+
+       
+             
+       
+       
+       
+        
+  
+    
+    
+    
+    
+    
+    
+    
+       
+    
+    
+    
+
+
+
+
+ 
