@@ -1,0 +1,27 @@
+// QUESTION LINK: https://leetcode.com/problems/maximum-xor-for-each-query
+
+
+
+class Solution {
+    public int[] getMaximumXor(int[] nums, int maximumBit) {
+      
+        // TC: O(N) SC: O(N)
+        
+        int xorValue=0;
+        int maximum=(1 << maximumBit)-1;
+        
+        for(int i=0;i<nums.length;i++)
+            xorValue^=nums[i];
+        
+        int res[]=new int[nums.length];
+        
+        for(int i=0;i<nums.length;i++)
+        {
+            res[i]=maximum^xorValue;
+            xorValue=xorValue^nums[nums.length-i-1];
+        }
+        return res;
+    
+    } 
+     
+}
