@@ -1,0 +1,36 @@
+//QUESTION LINK: https://leetcode.com/problems/matrix-block-sum/
+
+class Solution {
+    public int[][] matrixBlockSum(int[][] mat, int k) {
+        
+        // TC: O(M*N)   SC:O(M*N)
+        
+        int K=k;
+        int m=mat.length,n=mat[0].length;
+        
+        int pref[][]=new int[m+1][n+1];
+        int ans[][]=new int[m][n];
+        
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+              pref[i][j]=pref[i-1][j]+pref[i][j-1]+mat[i-1][j-1]-pref[i-1][j-1];
+            }
+        }
+        
+
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+               int a= Math.max(0, i-K),
+                b = Math.max(0, j-K),
+                c = Math.min(m, i+K+1),
+                d = Math.min(n, j+K+1);
+                
+                ans[i][j] = pref[c][d] - pref[c][b] - pref[a][d] + pref[a][b];
+            }
+          
+        }
+        
+        
+        return ans; 
+    }
+}
