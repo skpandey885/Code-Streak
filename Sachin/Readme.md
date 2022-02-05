@@ -76,4 +76,8 @@ DAY 32 - Minimum Number of Vertices to Reach All Nodes<br><hr>
 DAY 33 - Max Area of Island<br><hr>
 DAY 34 - Find Next Greater Element<br>
 DAY 34 - Second minimum node in a binary tree<br><hr>
-
+<hr>
+DAY 35 - Maximum XOR for Each Query<br>
+<hr>
+DAY 36 - Matrix Block Sum<br>
+DAY 36 - Merge k sorted Lists<br><hr>
