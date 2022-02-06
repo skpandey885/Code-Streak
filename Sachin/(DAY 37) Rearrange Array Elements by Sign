@@ -1,0 +1,27 @@
+// QUESTION LINK: https://leetcode.com/problems/rearrange-array-elements-by-sign/
+
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+              
+        
+        //TC: O(N)    SC:O(N)
+        
+int arr[]=new int[nums.length];
+
+        int p=0,n=1;
+
+for(int i=0;i<nums.length;i++){
+    if(nums[i]<0){
+        arr[n]=nums[i];
+        n+=2;
+    }else{
+        arr[p]=nums[i];
+        p+=2;
+    }
+}        
+
+   return arr; 
+        
+        
+    }
+}
