@@ -1,0 +1,43 @@
+// QUESTION LINK: https://leetcode.com/contest/weekly-contest-279/problems/smallest-value-of-the-rearranged-number/
+
+class Solution {
+    public long smallestNumber(long num) {
+        
+        String s=String.valueOf(Math.abs(num));
+        if(s.length()==1) return Long.parseLong(s);
+        
+        char ch[]=s.toCharArray();
+          Arrays.sort(ch);
+       if(num>=0){
+           int k=0;
+           
+           while(ch[k]=='0' && k<ch.length) k++;
+           
+           if(k<ch.length){
+           char temp=ch[0];
+           ch[0]=ch[k];
+           ch[k]=temp;    
+           }
+  
+       }else{
+      reverse(ch,ch.length);
+       }
+        
+        long num2=Long.parseLong(String.valueOf(ch));
+        if(num<0)  num2*=-1;
+           
+        return num2;
+ 
+    }
+    
+     static void reverse(char a[], int n)
+    {
+        int i;
+         char t;
+        for (i = 0; i < n / 2; i++) {
+            t = a[i];
+            a[i] = a[n - i - 1];
+            a[n - i - 1] = t;
+        }
+    }
+}
