@@ -1,0 +1,38 @@
+// QUESTIONS LINK: https://leetcode.com/contest/weekly-contest-279/problems/sort-even-and-odd-indices-independently/
+
+class Solution {
+    public int[] sortEvenOdd(int[] nums) {
+     
+        int n=nums.length;
+        
+        ArrayList<Integer> a=new ArrayList<>();
+        ArrayList<Integer> b=new ArrayList<>();
+    
+        for(int i=0;i<n;i++){
+            if(i%2==0){
+                a.add(nums[i]);
+            }else{
+                 b.add(nums[i]);
+            }
+        }
+        
+        Collections.sort(a);
+        Collections.sort(b,Collections.reverseOrder());
+   
+        int e=0,o=1;
+        
+       for(int i: a){
+           nums[e]=i;
+           e+=2;
+       }
+        
+          for(int i: b){
+           nums[o]=i;
+           o+=2;
+       }
+        
+        return nums;
+        
+        
+    }
+}
