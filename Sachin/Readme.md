@@ -81,3 +81,4 @@ DAY 35 - Maximum XOR for Each Query<br>
 <hr>
 DAY 36 - Matrix Block Sum<br>
 DAY 36 - Merge k sorted Lists<br><hr>
+DAY 37 - Rearrange Array Elements by Sign<br><hr>
