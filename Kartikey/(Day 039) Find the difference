@@ -1,0 +1,21 @@
+//  https://leetcode.com/problems/find-the-difference/
+
+
+
+class Solution {
+public:
+    char findTheDifference(string s, string t) 
+    {
+      for(int i=0;i<s.size();i++)
+          
+         // sum of ascii values of elements
+      
+          
+          
+		t[i+1]+=t[i]-s[i]; 
+        
+        
+         return t[t.size()-1];  // return extra value 
+          
+    }
+};
