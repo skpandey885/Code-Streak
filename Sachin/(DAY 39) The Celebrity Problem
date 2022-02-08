@@ -1,0 +1,56 @@
+ //QUESTION LINK: https://practice.geeksforgeeks.org/problems/the-celebrity-problem/1/#      
+-------------------------TC: O(N^2) SC:O(N)----------------
+       int N=n;       
+ int val[]=new int[N];
+ for(int i=0;i<M.length;i++){
+     for(int j=0;j<M[i].length;j++){
+         if(M[i][j]==1){
+         val[i]--;
+         val[j]++;
+    }
+}}
+ for(int i=0;i<N;i++){
+     if(val[i]==(N-1))
+     return i;
+ }
+    return -1;
+-------------------------------------------------------------
+
+
+
+-------------------------TC: O(N) SC:O(N)---------------------
+class Solution
+{ 
+    int celebrity(int M[][], int n)
+    {   
+        
+    Stack<Integer> stack=new Stack<>();
+    
+    for(int i=0;i<M[0].length;i++)
+        stack.push(i);
+        
+        while(stack.size()>1){
+    
+            int top=stack.pop();
+            int bottom=stack.pop();
+            
+            if(M[bottom][top]==1){
+                stack.push(top);
+            }else{
+                stack.push(bottom);
+            }
+        }
+        
+        int num=stack.pop();
+        
+    for(int i=0;i<M.length;i++){
+        if(i!=num){
+            if(M[i][num]==0 || M[num][i]==1)
+            return -1;
+        }
+    }
+ 
+   return num;  
+   }}
+   
+   ------------------------------------------------------
