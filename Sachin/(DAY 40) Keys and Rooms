@@ -1,0 +1,29 @@
+// QUESTION LINK:  https://leetcode.com/problems/keys-and-rooms/
+
+class Solution {
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+      
+        // TC: O(V+E) SC: O(N)
+        
+        boolean visited[]=new boolean[rooms.size()];
+        
+       traverse(rooms,visited,0);
+        
+        for(int i=0;i<visited.length;i++)
+          if(visited[i]==false)
+              return false;
+        
+        return true;
+    }
+    
+    void traverse(List<List<Integer>> rooms, boolean visited[], int i){
+        visited[i]=true;
+        
+        for(int node: rooms.get(i)){
+            if(!visited[node]){
+                traverse(rooms,visited,node);
+            }
+        }
+        
+    }
+}
