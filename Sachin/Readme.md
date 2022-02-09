@@ -82,3 +82,11 @@ DAY 35 - Maximum XOR for Each Query<br>
 DAY 36 - Matrix Block Sum<br>
 DAY 36 - Merge k sorted Lists<br><hr>
 DAY 37 - Rearrange Array Elements by Sign<br><hr>
+DAY 38 - Smallest Value of the Rearranged Number<br>
+DAY 38 - Sort Even and Odd Indices Independently<br>
+<hr>
+DAY 39 - The Celebrity Problem<br>
+<hr>
+DAY 40 - Keys and Rooms<br>
+DAY 40 - Number of Provinces<br><hr>
+
