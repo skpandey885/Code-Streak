@@ -1,0 +1,90 @@
+// https://leetcode.com/problems/decode-string/
+
+// class Solution {
+// public:
+    
+//     void PrintStack(stack<string> s)
+// {
+   
+//     if (s.empty())
+//         return;
+     
+ 
+//     int x = s.top();
+ 
+    
+//     s.pop();
+ 
+//     PrintStack(s);
+ 
+   
+//     cout << x << " ";
+ 
+  
+//     s.push(x);
+// }
+//     string decodeString(string s) {
+//         stack<char> st;
+//         char ans;
+//         int count;
+//         for(int i =0; i< s.size(); i++){
+//             if(s[i] == '['){
+//                 for(int j = 0; j <s[i -1]; j++){
+//                     count += s[i-1]; 
+//                     st.push(s[j]);
+//                 }
+                
+//             }
+//             else{
+//                 continue;
+//             }
+//         }
+//         for(int i =0; i< count; i++){
+//             string d += st.top();
+
+//             st.pop();
+            
+           
+//         } 
+//         return string;
+        
+//     }
+// };
+
+
+class Solution {
+public:
+    string decodeString(string s) {
+      stack<char>st; string ans;
+    for(int i=0;i<s.length();i++){
+       if(s[i]==']'){
+           string temp,pb;
+           while(st.size()>0 && st.top()!='['){ 
+               temp+=st.top(); st.pop();
+           }
+           string num;
+           if(st.size()) st.pop();
+               while(st.size()>0 && isdigit(st.top()) ){
+                   num+=st.top(); st.pop();
+               }           
+                          
+           reverse(num.begin(),num.end()); 
+           reverse(temp.begin(),temp.end()); 
+          int n=0;
+           for(int i=0;i<num.length();i++){
+               n=n*10+ num[i]-'0';  //converting string to number
+           }
+          
+           for(int i=0;i<n;i++) pb+=temp; 
+           for(int i=0;i<pb.length();i++) st.push(pb[i]); 
+       }
+        else st.push(s[i]); 
+    }
+     while(st.size()>0){ 
+         ans+=st.top();
+         st.pop();
+     }   
+        reverse(ans.begin(),ans.end()); 
+        return ans;
+    }
+};
