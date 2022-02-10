@@ -1,0 +1,34 @@
+// QUESTION LINK: https://leetcode.com/problems/number-of-provinces/
+
+class Solution {
+    public int findCircleNum(int[][] isConnected) {
+        
+        // TC: O(V+E)     SC: O(N)
+        
+        int size=isConnected.length;
+        int count=0;
+        boolean visited[]=new boolean[size];
+    
+        for(int i=0;i<size;i++){
+            if(!visited[i]){
+                dfs(isConnected, i, visited);
+                count++;
+            }
+        }
+        
+        
+        return count;
+        
+    }
+    
+     void dfs(int[][] isConnected, int currNum, boolean visited[])
+     {
+         visited[currNum]=true;
+         for(int j=0;j<isConnected[currNum].length;j++){
+             if(currNum!=j && !visited[j] && isConnected[currNum][j]==1){
+                 dfs(isConnected, j, visited);
+             }
+         }
+     }
+    
+}
