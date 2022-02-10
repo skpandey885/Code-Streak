@@ -1,0 +1,59 @@
+// QUESTION LINK: https://leetcode.com/problems/maximum-binary-tree/
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ 
+ // TC:O(N^2) SC: O(N i.e Recursive Space)
+ 
+class Solution {
+    public TreeNode constructMaximumBinaryTree(int[] nums) {
+        
+        
+       return traverse(nums,0,nums.length-1); 
+    }
+    
+  
+  TreeNode traverse(int [] nums, int i, int j){
+        
+        if(i>j)
+          return null;
+      
+       int maxIndex =findMax(nums,i,j);
+       
+        TreeNode curr=new TreeNode(nums[maxIndex]);
+        curr.left=traverse(nums,i,maxIndex-1);
+        curr.right=traverse(nums,maxIndex+1,j);
+         
+        return curr;
+    }
+    
+    
+    
+    int findMax(int nums[], int start, int end){
+        int max=Integer.MIN_VALUE,maxIndex=-1;
+        
+        for(int i=start;i<=end;i++){
+            if(nums[i]>max){
+                max=nums[i];
+                maxIndex=i;
+            }
+        }
+        
+        return maxIndex;
+    }
+    
+}
