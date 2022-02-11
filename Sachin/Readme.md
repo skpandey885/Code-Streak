@@ -91,4 +91,5 @@ DAY 40 - Keys and Rooms<br>
 DAY 40 - Number of Provinces<br><hr>
 DAY 41 - Maximum Binary Tree<br>
 DAY 41 - Number of provinces<br><hr>
+DAY 42 - nCr<br><hr>
 
