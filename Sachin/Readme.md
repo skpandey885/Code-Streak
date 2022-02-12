@@ -92,4 +92,6 @@ DAY 40 - Number of Provinces<br><hr>
 DAY 41 - Maximum Binary Tree<br>
 DAY 41 - Number of provinces<br><hr>
 DAY 42 - nCr<br><hr>
-
+DAY 43 - Fractional Knapsack<br>
+DAY 43 - Job Sequencing Problem<br>
+DAY 43 - N meetings in one room<br><hr>
