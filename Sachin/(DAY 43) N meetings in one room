@@ -1,0 +1,86 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1/?track=DSASP-Greedy&batchId=154
+
+// { Driver Code Starts
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+class GFG {
+    public static void main(String args[]) throws IOException {
+        BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine().trim());
+
+        while (t-- > 0) {
+            String inputLine[] = br.readLine().trim().split(" ");
+            int n = Integer.parseInt(inputLine[0]);
+
+            int start[] = new int[n];
+            int end[] = new int[n];
+
+            inputLine = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++)
+                start[i] = Integer.parseInt(inputLine[i]);
+
+            inputLine = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) 
+                end[i] = Integer.parseInt(inputLine[i]);
+                
+            int ans = new Solution().maxMeetings(start, end, n);
+            System.out.println(ans);
+        }
+    }
+}
+// } Driver Code Ends
+
+
+class Solution 
+{
+    //Function to find the maximum number of meetings that can
+    //be performed in a meeting room.
+    
+    // TC: O(NLOGN)    SC: O(N)
+    public static int maxMeetings(int start[], int end[], int n)
+    {
+        Pair[] arr=new Pair[n];
+    
+       for(int i=0;i<n;i++){
+           arr[i]=new Pair();
+           arr[i].st=start[i];
+           arr[i].et=end[i];
+       }
+    
+   Arrays.sort(arr,new Comparator<Pair>() {
+
+    public int compare(Pair a, Pair b) {
+        return a.et-b.et;
+    }
+});
+
+
+Pair curr=arr[0];
+int count=1;
+
+ for(Pair p: arr){
+     int st=p.st,et=p.et;
+   
+   if(st>curr.et){
+       count++;
+       curr=p;
+   }
+   
+
+ }
+ 
+    return count;
+    
+    }
+}
+
+class Pair{
+    int st;
+    int et;
+    
+
+    
+}
