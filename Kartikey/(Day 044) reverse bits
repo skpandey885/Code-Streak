@@ -1,0 +1,16 @@
+// https://leetcode.com/problems/reverse-bits/
+
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        int i=31;
+        uint32_t new_num = 0;
+        while(n){
+            int last_digit = n&1;
+            new_num+= last_digit<<i;
+            i--;
+            n=n>>1;
+        }
+        return new_num;
+    }
+};
