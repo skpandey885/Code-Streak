@@ -1,7 +1,7 @@
 Day 1-
 length of last word </br>
 Day 1-
-Longest substring</br>
+Longest substrig</br>
 --------------------------------------------------------------------------------------------------
 Day 2-
 GCDQ (Codechef)</br>
