@@ -1,0 +1,67 @@
+//QUESTION LINK: https://leetcode.com/problems/balance-a-binary-search-tree/
+
+class Solution {
+    List<Integer> nodes;
+    TreeNode root = null;
+    
+    public TreeNode balanceBST(TreeNode node) {
+        nodes = new ArrayList<>();
+        dfs(node);
+        
+        Collections.sort(nodes);
+        
+        System.out.println(nodes);
+        
+        divide(0, nodes.size()-1, nodes);
+        
+        return root;
+    }
+    
+    public void divide(int i, int j, List<Integer> nodes){
+        if(i>j){
+            return;
+        }
+        
+        int mid = (i+j)/2;
+        
+        insert(nodes.get(mid));
+        divide(i, mid-1, nodes);
+        divide(mid+1, j, nodes);
+    }
+    
+    public void dfs(TreeNode node){
+        if(node==null){
+            return;
+        }
+        nodes.add(node.val);
+        dfs(node.left);
+        dfs(node.right);
+    }
+    
+    public void insert(int x){
+        if(root == null){
+            root = new TreeNode(x);
+            return;
+        }
+        
+        TreeNode cur = root;
+        
+        while(true){
+            if(x > cur.val){
+                if(cur.right==null){
+                    cur.right = new TreeNode(x);
+                    return;
+                }
+                
+                cur = cur.right;
+            } else {
+                if(cur.left==null){
+                    cur.left = new TreeNode(x);
+                    return;
+                }
+                
+                cur = cur.left;
+            }
+        }
+    }
+}
