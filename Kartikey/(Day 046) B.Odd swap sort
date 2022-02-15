@@ -1,0 +1,102 @@
+// https://codeforces.com/contest/1638/problem/B
+
+
+#include <bits/stdc++.h>
+using namespace std; 
+
+/* 
+   code by:
+   kartikey singh
+   
+*/   
+
+#define ll               long long int
+#define Y                cout << ("YES\n")
+#define N                cout << ("NO\n")
+#define fr               for(int i =0; i<n; i++)
+#define pb               push_back
+#define vll              vector<long long int> 
+
+
+
+
+/*Imp. Tips:
+swap 2 element in vector -> reverse(a.begin()+index1 , a.begin() + index2) 
+
+
+
+*/
+
+
+int main() {
+
+      #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt" , "w", stdout);
+      #endif
+         
+         
+  ll t;
+  cin >> t; 
+  
+
+  while(t--){  
+  ll n;
+  cin >> n;
+  vll odd, even;
+  fr{
+    ll x;
+    cin >> x;
+    if(x % 2 == 0)
+        even.pb(x);
+    else
+        odd.pb(x);
+  } 
+  
+  vll sortedOdd = odd, sortedEven = even;
+  sort(sortedOdd.begin(), sortedOdd.end());
+  sort(sortedEven.begin(), sortedEven.end());
+  bool is  = true;
+  
+  for(int i = 0; i<odd.size(); i++){
+    if(sortedOdd[i] != odd[i]){
+        is = false;
+        break;
+        
+    }
+  }
+  
+  for(int i= 0; i< even.size(); i++){
+    if(sortedEven[i] != even[i]){
+        is = false;
+        break;
+    }
+    
+    
+    }
+    if(is)
+        cout << "yes" << endl;
+    else{
+        cout << "No"<< endl;
+  }  
+
+      
+      
+
+
+ 
+  
+  
+
+  
+     
+   
+   }      
+
+
+        
+    
+    
+    
+   
+}
