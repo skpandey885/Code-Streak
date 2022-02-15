@@ -1,0 +1,76 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/find-whether-path-exist5238/1/?track=DSASP-Graph&batchId=154#
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+{
+    public static void main(String[] args) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine().trim());
+        while(T-->0)
+        {
+            int n = Integer.parseInt(br.readLine().trim());
+            int[][] grid = new int[n][n];
+            for(int i = 0; i < n; i++){
+                String[] S = br.readLine().trim().split(" ");
+                for(int j = 0; j < n; j++){
+                    grid[i][j] = Integer.parseInt(S[j]);
+                }
+            }
+            Solution obj = new Solution();
+            boolean ans = obj.is_Possible(grid);
+            if(ans)
+                System.out.println("1");
+            else 
+                System.out.println("0");
+        }
+    }
+}// } Driver Code Ends
+
+
+
+
+class Solution
+{
+    //Function to find whether a path exists from the source to destination.
+   static boolean found=false;
+   
+    public boolean is_Possible(int[][] grid)
+    {
+        int size=grid.length;
+        boolean visited[][]=new boolean[size][size];
+        
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[i].length;j++){
+                if(grid[i][j]==1){
+                 traverse(grid,i,j,visited);
+                 return found;
+                }
+            }
+        }
+        
+        return found;
+    }
+    
+    void traverse(int [][] grid, int i, int j,   boolean visited[][] ){
+        if(i<0 || i>=grid.length || j<0 || j>=grid.length || grid[i][j]==0 || visited[i][j]==true){
+            return;
+        }
+        
+        if(grid[i][j]==2)
+        {
+            found=true;
+            return;
+        }
+        
+        visited[i][j]=true;
+        traverse(grid,i+1,j,visited);
+        traverse(grid,i-1,j,visited);
+        traverse(grid,i,j+1,visited);
+        traverse(grid,i,j-1,visited);
+        
+    }
+}
