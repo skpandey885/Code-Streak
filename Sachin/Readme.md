@@ -95,3 +95,9 @@ DAY 42 - nCr<br><hr>
 DAY 43 - Fractional Knapsack<br>
 DAY 43 - Job Sequencing Problem<br>
 DAY 43 - N meetings in one room<br><hr>
+DAY 44 - Sorting Parts<br><hr>
+DAY 45 - Balanced Binary tree<br><hr>
+DAY 46 - Find whether path exist<br>
+DAY 46 - Largest number with given sum<br>
+DAY 46 - Possible paths between 2 vertices<br>
+DAY 46 - Tower Of Hanoi<br><hr>
