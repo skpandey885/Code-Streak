@@ -101,3 +101,4 @@ DAY 46 - Find whether path exist<br>
 DAY 46 - Largest number with given sum<br>
 DAY 46 - Possible paths between 2 vertices<br>
 DAY 46 - Tower Of Hanoi<br><hr>
+DAY 47 - Swap Nodes in Pairs<br><hr>
