@@ -1,0 +1,31 @@
+class Solution {
+    
+    public List<String> generateParenthesis(int n) {
+ 
+        int oc=0,cc=0;
+      List<String> ls =new ArrayList<>();
+        
+       traverse(n,oc,cc,"",ls);  
+          return ls;
+    }
+    
+  void traverse(int n, int oc, int cc, String asf, List<String> ls ){
+   if(cc==n){
+       ls.add(asf);
+       return;
+   }
+        
+      if(oc>=cc && oc<n){
+          traverse(n,oc+1,cc,(asf+"("),ls);
+      }
+      
+      if(cc<oc){
+               traverse(n,oc,cc+1,(asf+")"),ls);
+      }
+      
+   }
+    
+    
+    
+    
+}
