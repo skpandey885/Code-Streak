@@ -1,0 +1,45 @@
+class Solution {
+    
+    
+    String arr[][]={{"a","b","c","$"},{"d","e","f","$"},{"g","h","i","$"},
+        {"j","k","l","$"},{"m","n","o","$"},{"p","q","r","s"},{"t","u","v","$"},
+        {"w","x","y","z"}
+    };
+    
+    boolean run=false;
+    
+    public List<String> letterCombinations(String digits) {
+       if(digits.equals("") && !run)
+           return new ArrayList<>();
+        
+     if(digits.length()<1 && run){
+         List<String> temp=new ArrayList<>();
+         temp.add("");
+         return temp;
+     }
+        run=true;
+        
+        int currNum=digits.charAt(0)-'0';
+        currNum-=2;
+        
+        List<String> remAns=letterCombinations(digits.substring(1));
+        
+        List<String> result=new ArrayList<>();
+        
+        int j=0;
+        
+        while(j<arr[currNum].length && !arr[currNum][j].equals("$") ){
+            for(String s: remAns){
+                result.add(arr[currNum][j]+s);
+            }
+            j++;
+        }
+
+        
+        return result;
+        
+        
+        
+        
+    }
+}
