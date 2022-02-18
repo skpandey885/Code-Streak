@@ -1,0 +1,43 @@
+//QUESTION LINK: https://leetcode.com/problems/climbing-stairs/
+
+class Solution {
+  
+    public int climbStairs(int n) {
+        
+        int arr[]=new int[n+1];
+        Arrays.fill(arr,-1);
+        int count=0;
+        return traverse(n,0,arr,count);
+
+    }
+
+    int traverse(int n, int ps, int arr[], int count){
+        if(ps>=n){
+            count++;
+            return count;
+        }
+        
+        if(arr[ps]!=-1){
+            return arr[ps]; 
+        }
+        
+        int sum=0;
+        
+       if(ps+1<=n){
+           sum+=traverse(n,ps+1,arr,count);
+       }
+        
+        if(ps+2<=n){
+             sum+=traverse(n,ps+2,arr,count);
+        }
+        
+       arr[ps]=sum;
+        
+        return arr[ps];
+        
+        
+    }
+    
+    
+    
+} 
