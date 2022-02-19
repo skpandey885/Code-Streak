@@ -1,0 +1,39 @@
+//QUESTION LINK: https://leetcode.com/problems/letter-tile-possibilities/
+
+class Solution {
+    
+    int count=0;
+    public int numTilePossibilities(String tiles) {
+        
+        char ch[]=tiles.toCharArray();
+        int n=ch.length;
+        
+        Arrays.sort(ch);
+        boolean visited[]=new boolean[n];
+        
+        traverse(ch,visited,n);
+        
+        return count;
+        
+  }
+    
+    
+    void traverse(char ch[], boolean visited[], int n){
+        for(int i=0;i<n;i++){
+            if(visited[i])
+                continue;
+            
+            // Line 1 
+            visited[i]=true;
+            count++;
+            
+            // Line 2
+            traverse(ch,visited,n);
+            
+            // Line 3
+            visited[i]=false;
+            while(i+1<n && ch[i]==ch[i+1]) i++;
+        
+        }
+    }
+}
