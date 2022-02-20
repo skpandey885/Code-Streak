@@ -1,0 +1,19 @@
+// QUESTION LINK: https://leetcode.com/contest/biweekly-contest-72/problems/find-three-consecutive-integers-that-sum-to-a-given-number
+
+class Solution {
+    public long[] sumOfThree(long num) {
+        
+        long arr[]=new long[3];
+        arr[1]=num/3;
+        arr[0]=arr[1]-1;
+        arr[2]=arr[1]+1;
+        
+        long sum=arr[0]+arr[1]+arr[2];
+
+        
+        if(sum<num)
+            return new long[]{};
+        
+        return arr;
+     }
+}
