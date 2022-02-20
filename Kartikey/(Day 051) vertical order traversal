@@ -1,0 +1,92 @@
+//   https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+// class Solution {
+// public:
+//     vector<vector<int>> verticalTraversal(TreeNode* root) {
+//         map<int,map<int, vector<int>>> nodes;
+//         queue<pair<TreeNode*, pair<int, int> > > q;
+//         vector<vector<int>> ans;
+        
+//         if(root == NULL){
+//             return ans;
+            
+            
+//         }
+//         q.push(make_pair(root, make_pair(0,0)));
+        
+//         while(!q.empty()){
+//             pair<TreeNode*, pair<int ,int > > temp = q.front();
+//             q.pop();
+//             TreeNode* frontNode = temp.first;
+//             int hd = temp.second.first;
+//             int lvl = temp.second.second;
+//             nodes[hd][lvl].push_back(frontNode->val);
+            
+            
+//             if(frontNode->left)
+//                 q.push(make_pair(frontNode->left, make_pair(hd-1, lvl+1)));
+            
+//             if(frontNode->right)
+//                 q.push(make_pair(frontNode->right, make_pair(hd+1, lvl +1)));
+//         }
+        
+//         for(auto i: nodes){
+//             for(auto j:i.second){
+//                 for(auto k:j.second){
+//                     ans.push_back(k);
+//                 }
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+
+class Solution {
+public:
+    void dfs(TreeNode* root, int level, int dev, map<int, vector<pair<int,int>>> &m){
+        if(!root) return;
+        
+        m[dev].push_back({level, root->val});
+        
+        dfs(root->left, level+1, dev-1, m);
+        dfs(root->right, level+1, dev+1, m);
+    }
+    
+    vector<vector<int>> verticalTraversal(TreeNode* root) {
+       
+        map<int, vector<pair<int,int>>> m;
+        dfs(root, 0, 0, m);
+        vector<vector<int>> ans;
+        for(auto &it: m){
+            auto dev = it.first;
+            vector<pair<int,int>> v = it.second;
+            sort(v.begin(), v.end(), [&](auto a, auto b){ // b {2,6} a {2,5}
+                if(a.first != b.first){
+                    return a.first < b.first;
+                }else{
+                    return a.second < b.second;
+                }
+            });
+            
+            ans.resize(ans.size()+1);
+            for(int i = 0; i < v.size(); i++){
+                ans[ans.size()-1].push_back(v[i].second);
+            }
+        }
+        
+        return ans;
+    }
+};
