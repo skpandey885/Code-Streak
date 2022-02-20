@@ -1,0 +1,32 @@
+// QUESTION LINK: https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/
+
+class Solution {
+    int count=0;
+    
+    // TC: O(N^2) SC: O(1)
+    
+    public int countMaxOrSubsets(int[] nums) {
+        int n=nums.length;
+        int max=0;
+      
+        for(int i: nums)
+            max|=i;
+        
+    traverse(0,0,max,nums,n);
+        return count;
+        
+    }
+    
+    void traverse(int pre, int index,int max,int nums[], int n){
+        if(pre==max)
+            count++;
+        
+        for(int i=index;i<n;i++)
+            traverse( (pre | nums[i]),i+1,max,nums,n);
+        
+    }
+    
+    
+    
+    
+}
