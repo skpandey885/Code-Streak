@@ -1,6 +1,5 @@
 // QUESTION LINK: https://leetcode.com/problems/largest-rectangle-in-histogram/
 
-
 ---------------------------------------------------------------------------------------------------------------------------------------------
          // TC: O(N^2) SC: O(1) - BRUTE FORCE SOLUTION
   
