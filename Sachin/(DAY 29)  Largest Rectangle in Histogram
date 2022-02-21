@@ -1,67 +1,110 @@
 // QUESTION LINK: https://leetcode.com/problems/largest-rectangle-in-histogram/
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+         // TC: O(N^2) SC: O(1) - BRUTE FORCE SOLUTION
+  
 class Solution {
     public int largestRectangleArea(int[] heights) {
-        
-        
-        // TC: O(N)
-        
         int n=heights.length;
         
-        int lb[]=new int[n];
-        int rb[]=new int[n];
-        
-       Stack<Integer> st=new Stack<>();    
-        rb[n-1]=n;
-        lb[0]=-1;
-        
-        st.push(n-1);
-
-        
-        for(int i=n-2;i>=0;i--){
-           
-            while(!st.isEmpty() && heights[st.peek()]>=heights[i])
-                st.pop();
-            
-            if(st.isEmpty()){
-                rb[i]=n;
-            }else{
-                rb[i]=st.peek();
-            }
-              st.push(i);
-        }
-        
-        st.clear();
-         st.push(0);
-        
-        for(int i=1;i<n;i++){
-           
-            while(!st.isEmpty() && heights[st.peek()]>=heights[i])
-                st.pop();
-            
-            if(st.isEmpty()){
-                lb[i]=-1;
-            }else {
-                lb[i]=st.peek();
-            }
-            st.push(i);
-        }
-        
-        int curr=0,max=0;
+        int total=-10;
         
         for(int i=0;i<n;i++){
-            int width=rb[i]-lb[i]-1;
-            curr=width*heights[i];
-            max=Math.max(curr,max);
+            int j=i-1;
+            
+            while(j>=0 && heights[j]>=heights[i]){
+                j--;
+            }
+            
+            int mark=0;
+            
+            if(j<0){
+               mark=i+j+1; 
+            }else{
+                mark=i-j-1;
+            }
+            int leftArea=mark*heights[i];
+            int k=i+1;
+            
+            while(k<=(n-1) && heights[k]>=heights[i]){
+                k++;
+            }
+            
+            int mark2=k-i-1;
+            int rightArea=mark2*heights[i];
+        
+           int temp=heights[i]+leftArea+rightArea;
+            
+           if(temp>total)
+            total=temp;
+       
+        
+        }
+        
+        return total;
+        
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+       // TC: O(N) SC: O(N) - OPTIMISED SOLUTION
+    
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        int n=heights.length;
+        
+        int left[]=new int[n];
+        int right[]=new int[n];
+        
+        Stack<Integer> st=new Stack<>();
+        
+          for(int i=n-1;i>=0;i--){
+            while(!st.isEmpty() && heights[st.peek()]>=heights[i]){
+                st.pop();
+            }
+            
+           if(st.isEmpty()){
+               right[i]=n;
+           }else{
+               right[i]=st.peek();
+           }
+            
+          st.push(i);  
         }
         
         
-        
-        return max;
-        
+        st.clear();
         
         
+        
+        for(int i=0;i<n;i++){
+            
+            while(!st.isEmpty() && heights[st.peek()]>=heights[i])
+            {
+                st.pop();
+            }
+            if(st.isEmpty()){
+                left[i]=-1;
+            }else{
+                left[i]=st.peek();
+            }
+            
+            st.push(i);
+        }
+     int maxArea=0;
+        
+        for(int i=0;i<n;i++){
+            maxArea=(int)Math.max(maxArea,(right[i]-left[i]-1)*heights[i]);
+        }
+        
+        return maxArea;
         
         
     }
 }
+
+
+
+
+   
