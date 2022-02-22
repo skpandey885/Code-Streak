@@ -1,22 +1,62 @@
 // QUESTION LINK- https://leetcode.com/problems/destroying-asteroids/
 
+--------------------------------------------------------------------------------------------------------------
+                            // TC: O(N^2) SC: O(1) - BRUTE FORCE APPROACH
+
 class Solution {
     public boolean asteroidsDestroyed(int mass, int[] asteroids) {
-        
-                int n=asteroids.length;
-                 
-        Arrays.sort(asteroids);
-       long sum=mass;
-        for(int i=0;i<n;i++)
-        { 
-             if(asteroids[i]<=sum)
-             sum+=asteroids[i];
-             else
-             return false;
+        int n=asteroids.length;
+        long mass2=mass;           // There is a possibility of Integer overflow.
+
+        for(int i=0;i<n;i++){
+            int minIndex=findMin(asteroids,n);
+            if(asteroids[minIndex]<=mass2){
+                mass2+=asteroids[minIndex];
+            }else{
+                return false;
+            }
+              asteroids[minIndex]=Integer.MAX_VALUE;
         }
-        
-        
         return true;
-        
+
+    }
+    
+    int findMin(int arr[], int n){
+
+        int min=Integer.MAX_VALUE,minIndex=0;
+
+        for(int i=0;i<n;i++){
+            if(arr[i]<min){
+                min=arr[i];
+                minIndex=i;
+            }
+        }
+
+        return minIndex;
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------
+
+                                      // TC: O(NLOGN) SC: O(1) - OPTIMAL SOLUTION
+
+
+class Solution {
+    public boolean asteroidsDestroyed(int mass, int[] asteroids) {
+
+
+        Arrays.sort(asteroids);
+        int n=asteroids.length;
+        long mass2=mass;   // There is a possibility of Integer overflow.
+
+        for(int i=0;i<n;i++){
+            if(mass2>=asteroids[i]){
+                mass2+=asteroids[i];
+            }else{
+                return false;
+            }
+        }
+
+        return true;
     }
 }
