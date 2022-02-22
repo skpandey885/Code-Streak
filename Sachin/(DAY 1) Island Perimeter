@@ -1,47 +1,51 @@
 // Question link - https://leetcode.com/problems/island-perimeter/
 
-// TIME COMPLEXITY: O(N^2)
+ // TC: O(N^2) SC: O(1)  - MOST OPTIMAL APPROACH
+// In the worst case we can get to travel the whole matrix so we cannot optimise it below  O(N^2). Hence, O(N^2) is the optimised time complexity.
 
-    static int islandPerimeter(int[][] grid) {
-        int degree=0;
+
+class Solution {
+    public int islandPerimeter(int[][] grid) {
         int count=0;
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[i].length;j++){ if(grid[i][j]==1) count++;}}
-
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[i].length;j++){
+        int sub=0;
+        int n=grid.length,m=grid[0].length;
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++){
                 if(grid[i][j]==1){
-                    {
-                    degree+=findDegree(grid,i,j);
-
-                    }
+                    count++;
+                    sub+=checkAdj(grid,i,j,n,m);
                 }
             }
         }
-
-
-return (4*count-degree);
+        
+        return ((count*4)-sub);    
     }
-
-    static int findDegree(int grid[][],int i,int j){
-int degree=0;
-        if(i+1<grid.length){
-          if(grid[i+1][j]==1)
-              degree++;
+    
+    int checkAdj(int arr[][], int i, int j, int n, int m){
+       int count=0;
+        
+        if(i+1<n){
+            if(arr[i+1][j]==1)
+                count++;
         }
-        if(i>0){
-            if(grid[i-1][j]==1)
-                degree++;
+        
+        if(j+1<m){
+            if(arr[i][j+1]==1)
+                count++;
         }
-
-        if(j+1<grid[i].length){
-            if(grid[i][j+1]==1)
-                degree++;
+        
+        if(i-1>=0){
+            if(arr[i-1][j]==1)
+                count++;
         }
-        if(j>0){
-            if(grid[i][j-1]==1)
-                degree++;
+        
+        if(j-1>=0){
+            if(arr[i][j-1]==1)
+                count++;
         }
-        return degree;
-
+        
+        return count;   
     }
+}
