@@ -1,0 +1,51 @@
+// QUESTION LINK: https://leetcode.com/problems/iterator-for-combination/
+
+     // TC: O(2^N) SC:O(N) - BRUTE FORCE APPROACH
+
+class CombinationIterator {
+
+    ArrayList<String> result=new ArrayList<>();
+    String str;
+    int len;
+    
+    
+    public CombinationIterator(String characters, int combinationLength) {
+       str=characters;
+       len=combinationLength;
+       generate(str,"",len);
+    
+    }
+    
+    public String next() {
+        String part=result.get(0);
+        result.remove(0);
+        return part;
+    }
+    
+    public boolean hasNext() {
+        return (!result.isEmpty());
+    }
+    
+    public void generate(String s, String asf, int l){
+        if(s.length()==0){
+            
+            if(asf.length()==l)
+            result.add(asf);
+            
+            return;
+        }
+        
+        String stt=String.valueOf(s.charAt(0));
+        generate(s.substring(1),asf+stt,l);
+        generate(s.substring(1),asf,l);
+    }
+    
+    
+}
+
+/**
+ * Your CombinationIterator object will be instantiated and called as such:
+ * CombinationIterator obj = new CombinationIterator(characters, combinationLength);
+ * String param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
