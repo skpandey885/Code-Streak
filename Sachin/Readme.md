@@ -113,5 +113,5 @@ DAY 51 - Count Number of maximum bitwise or subsets<br>
 DAY 51 - Find three consecutive integers that sum to a given number<br><hr>
 DAY 52 - Iterator Combination<br><hr>
 DAY 53 - Knights Tour<br><hr>
-DAY 54 - Letter Case Permutation<br><hr>
-
+DAY 54 - Letter Case Permutation<br>
+DAY 54 - Left View of Binary Tree<br><hr>
