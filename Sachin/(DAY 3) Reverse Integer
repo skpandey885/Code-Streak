@@ -1,50 +1,73 @@
-// https://leetcode.com/problems/reverse-integer/
+//QUESTION LINK:  https://leetcode.com/problems/reverse-integer/
+
+---------------------------------------------------------------------------------------------------------------------------------------
+                  // TC: O(N) where N is the number of digits in a given number SC:O(N) - BRUTE FORCE APPROACH
 
 class Solution {
     public int reverse(int x) {
-       
-        // TIME COMPLEXITY: O(N) & SPACE COMPLEXITY: O(1)
-        
-        if(x==0)
+
+      long num=x;
+
+        int sign=(x<0)?(-1):1;
+
+        System.out.println(sign);
+         num*=sign;
+
+        char ch[]=String.valueOf(num).toCharArray();
+        int n=ch.length;
+
+        char []reversed=reverse(ch,n);
+
+        String rev2=String.valueOf(reversed);
+        System.out.print(rev2);
+        long tt=Long.parseLong(rev2);
+
+        tt*=sign;
+
+        if(tt>Integer.MAX_VALUE || tt<Integer.MIN_VALUE)
             return 0;
-        
-           String reversed="",s="";
-        int count=0;
-  
-        if(x<0)
-        {
-            s=String.valueOf(x);
-            s=s.substring(1,s.length());
-            reversed=reverse(s);
-            count=1;
-        }else{
-            
-             s=String.valueOf(x);
-            reversed=reverse(s);
-            count=2;
-        }
-    
-        Long jj=Long.parseLong(reversed);
-        Long p= (-1*Long.parseLong(reversed));
-        
-        if(jj>Integer.MAX_VALUE || p<Integer.MIN_VALUE)
-            return 0;
-    
-        if(count==1)
-            return (-1*Integer.parseInt(reversed));
-        
-        return (Integer.parseInt(reversed));
-   }
-    
-    
-    String reverse(String s){
-        String res="";
-        for(int i=s.length()-1;i>=0;i--){
-            res+=s.charAt(i);
-        }
-        
-        return res;
+
+        return (int)tt;
     }
-    
-    
+
+    char[] reverse(char ch[],int n){
+
+        for(int i=0;i<(n/2);i++){
+            char temp=ch[i];
+            ch[i]=ch[n-1-i];
+            ch[n-1-i]=temp;
+        }
+        return ch;
+    }
 }
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+                      // TC: O(N) where N is the number of digits in a given number SC:O(1) - OPTIMAL APPROACH
+
+class Solution {
+    public int reverse(int x) {
+        int num=x;
+        int sign=(x<0)?-1:1;  
+        x*=sign;
+
+       long reversed=0;
+
+        while(x>0){
+            int rem=x%10;
+            reversed=(reversed*10)+rem;
+            x/=10;
+        }
+
+        reversed*=sign;
+
+        if(reversed<Integer.MIN_VALUE | reversed>Integer.MAX_VALUE)
+            return 0;
+
+        return (int) reversed;        
+
+    }
+}
+
+
