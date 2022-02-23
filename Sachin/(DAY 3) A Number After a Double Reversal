@@ -1,18 +1,16 @@
-https://leetcode.com/problems/a-number-after-a-double-reversal/
+QUESTION LINK: https://leetcode.com/problems/a-number-after-a-double-reversal/
+
+    //   TC: O(1) SC:O(1)
 
 class Solution {
-  public boolean isSameAfterReversals(int num) {
-  
-// TIME COMPLEXITY: O(1) & SPACE COMPLEXITY: O(1)
-
-      if(num==0)
-          return true;
-      
-   int rem=num%10;
-      if(rem==0)
-          return false;
-      
-      return true;
-      
+    public boolean isSameAfterReversals(int num) {
+        if(num==0)
+            return true;
+        
+        if(num%10==0)
+            return false;
+        
+        return true;
+        
     }
 }
