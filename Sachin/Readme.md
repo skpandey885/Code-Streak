@@ -102,3 +102,16 @@ DAY 46 - Largest number with given sum<br>
 DAY 46 - Possible paths between 2 vertices<br>
 DAY 46 - Tower Of Hanoi<br><hr>
 DAY 47 - Swap Nodes in Pairs<br><hr>
+DAY 48 - Unit Area of largest region of 1's<br><hr>
+DAY 49 - Climbing Stairs<br>
+DAY 49 - Generate Parentheses<br>
+DAY 49 - Letter Combinations of a Phone Number<br><hr>
+DAY 50 - Letter Tile Possibilities<br>
+DAY 50 - Permutations of a given string<br>
+DAY 50 - Special Matrix<br><hr>
+DAY 51 - Count Number of maximum bitwise or subsets<br>
+DAY 51 - Find three consecutive integers that sum to a given number<br><hr>
+DAY 52 - Iterator Combination<br><hr>
+DAY 53 - Knights Tour<br><hr>
+DAY 54 - Letter Case Permutation<br><hr>
+
