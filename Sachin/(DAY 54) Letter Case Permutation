@@ -1,0 +1,32 @@
+// QUESTION LINK: https://leetcode.com/problems/letter-case-permutation/
+
+ //     TC: O(2^N) SC: O(N) - BRUTE FORCE SOLUTION
+
+class Solution {
+    public List<String> letterCasePermutation(String s) {
+
+        List<String> ls=new ArrayList<>();
+        int n=s.length();
+
+        traverse(s,"",ls,n);
+        return ls;
+    }
+
+    void traverse(String s, String asf, List<String> ls, int n){
+      if(n==0){
+          ls.add(asf);
+          return;
+      }
+
+        char c=s.charAt(0);
+
+        if(Character.isDigit(c)){
+                traverse(s.substring(1),asf+c,ls,n-1);
+        }else{
+           char lc=Character.toLowerCase(c);
+           char uc=Character.toUpperCase(c);
+
+           traverse(s.substring(1),asf+lc,ls,n-1);
+           traverse(s.substring(1),asf+uc,ls,n-1);
+      }}   
+}
