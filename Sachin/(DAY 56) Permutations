@@ -1,6 +1,6 @@
 // QUESTION LINK: https://leetcode.com/problems/permutations/
 
-// TC: O(2^N) N is the Size of Nums SC: O(N) i.e Recursive Space
+//  TC: O(2^N) N is the Size of Nums SC: O(N) i.e Recursive Space
 
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
