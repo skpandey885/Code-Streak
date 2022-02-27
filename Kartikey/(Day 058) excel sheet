@@ -1,0 +1,24 @@
+// https://leetcode.com/problems/excel-sheet-column-title/
+
+
+
+class Solution {
+public:
+    string convertToTitle(int columnNumber) {
+        string ans;
+        while(columnNumber > 0){
+            int tmp = columnNumber % 26;
+			if(tmp == 0){   
+                ans += 'Z';
+                columnNumber--;   
+            }
+            else{
+                ans += tmp + 'A' - 1;
+            }
+            columnNumber /= 26;
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+        
+    }
+};
