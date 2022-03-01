@@ -1,0 +1,124 @@
+// QUESTION LINK: https://www.codechef.com/LTIME105C/problems/PLPROCESS/
+
+   //             TC:O(N)          SC:O(1)
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+ class FastReader 
+    { 
+        BufferedReader br; 
+        StringTokenizer st; 
+
+        public FastReader() 
+        { 
+            br = new BufferedReader(new
+                     InputStreamReader(System.in)); 
+        } 
+
+        String next() 
+        { 
+            while (st == null || !st.hasMoreElements()) 
+            { 
+                try
+                { 
+                    st = new StringTokenizer(br.readLine()); 
+                } 
+                catch (IOException  e) 
+                { 
+                    e.printStackTrace(); 
+                } 
+            } 
+            return st.nextToken(); 
+        } 
+
+        int nextInt() 
+        { 
+            return Integer.parseInt(next()); 
+        } 
+
+        long nextLong() 
+        { 
+            return Long.parseLong(next()); 
+        } 
+
+        double nextDouble() 
+        { 
+            return Double.parseDouble(next()); 
+        } 
+
+        String nextLine() 
+        { 
+            String str = ""; 
+            try
+            { 
+                str = br.readLine(); 
+            } 
+            catch (IOException e) 
+            { 
+                e.printStackTrace(); 
+            } 
+            return str; 
+        } 
+    } 
+
+
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	
+	try{
+	    OutputStream outputStream =System.out;
+        PrintWriter out =new PrintWriter(outputStream);
+        FastReader input =new FastReader();
+
+       long t=input.nextLong();
+  while(t-->0){
+
+
+
+
+            int n=input.nextInt();
+        
+            long arr[]=new long[n];
+           
+            long sum=0;
+           
+           for( int i=0;i<n;i++)
+           {
+               int x=input.nextInt();
+               arr[i]=x;
+               sum+=x;
+           }
+           
+           
+           long ans=Long.MAX_VALUE;
+            long leftSum=0;
+           
+           
+           for( int i=0;i<n;i++){
+               leftSum+=arr[i];
+               sum-=arr[i];
+               
+               long max=(long) Math.max(leftSum,sum);
+               
+               if(max<ans)
+               ans=max;
+               
+           }
+           
+           System.out.println(ans);
+           
+    }
+	}catch(Exception e){
+	    return;
+	}
+	
+	
+	}
+}
