@@ -1,0 +1,84 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1#
+         // TC: O(N!)        SC:O(N^2)
+
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
+class GFG{
+    public static void main(String args[])throws IOException
+    {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(in.readLine());
+        while(t-- > 0) {
+            int n = Integer.parseInt(in.readLine());
+            
+            Solution ob = new Solution();
+            ArrayList<ArrayList<Integer>> ans = ob.nQueen(n);
+            if(ans.size() == 0)
+                System.out.println("-1");
+            else {
+                for(int i = 0;i < ans.size();i++){
+                    System.out.print("[");
+                    for(int j = 0;j < ans.get(i).size();j++)
+                        System.out.print(ans.get(i).get(j) + " ");
+                    System.out.print("] ");
+                }
+                System.out.println();
+            }
+        }
+    }
+}// } Driver Code Ends
+
+
+// User function Template for Java
+
+class Solution{
+    static ArrayList<ArrayList<Integer>> nQueen(int n) {
+   
+       boolean column[]=new boolean[n];
+   
+       boolean nDiag[]=new boolean[2*n-1];
+       boolean rDiag[]=new boolean[2*n-1];
+       
+       ArrayList<ArrayList<Integer>> result=new ArrayList<>();
+       
+       ArrayList<Integer> arr=new ArrayList<>();
+       
+       solve(n,0,arr,result,column,nDiag,rDiag);
+       return result;
+  }
+  
+  static void solve (int n, int row,ArrayList<Integer> arr,ArrayList<ArrayList<Integer>> result,boolean column[],boolean nDiag[], boolean rDiag[])
+    
+    {
+        
+        if(row==n){
+           ArrayList<Integer> temp=new ArrayList(arr);
+           result.add(temp);
+            return;
+        }
+        
+        for(int col=0;col<n;col++){
+            
+        if(column[col]==false && nDiag[row+col]==false && rDiag[row-col+n-1]==false)        
+       {
+           
+           column[col]=true;
+           nDiag[row+col]=true;
+           rDiag[row-col+n-1]=true;
+           arr.add(col+1);
+           
+           solve(n,row+1,arr,result,column,nDiag,rDiag);
+           
+           column[col]=false;
+           nDiag[row+col]=false;
+           rDiag[row-col+n-1]=false;
+           arr.remove(arr.size()-1);
+           
+       }     
+            
+            
+        }
+    }    
+}
