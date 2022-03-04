@@ -1,0 +1,48 @@
+// QUESTION LINK: https://leetcode.com/problems/path-with-maximum-gold/
+
+        //   TC:O((N*M)^2)           SC:O(N^2)
+ 
+class Solution {
+
+    public int getMaximumGold(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        boolean visited[][] = new boolean[n][m];
+
+        int max = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] != 0) {
+                    int ans = solve(i, j, n, m, 0, grid, visited);
+                    max = Math.max(max, ans);
+                }
+            }
+        }
+
+        return max;
+    }
+
+    int solve(int i, int j, int n, int m, int sum, int[][] grid, boolean[][] visited) {
+        if (i < 0 || i >= n || j < 0 || j >= m || visited[i][j] || grid[i][j] == 0) {
+            return sum;
+        }
+
+        visited[i][j] = true;
+
+        int b = solve(i, j + 1, n, m, sum + grid[i][j], grid, visited);
+        int d = solve(i, j - 1, n, m, sum + grid[i][j], grid, visited);
+        int c = solve(i - 1, j, n, m, sum + grid[i][j], grid, visited);
+        int a = solve(i + 1, j, n, m, sum + grid[i][j], grid, visited);
+
+        visited[i][j] = false;
+
+        int max = 0;
+        max = Math.max(max, a);
+        max = Math.max(max, b);
+        max = Math.max(max, c);
+        max = Math.max(max, d);
+
+        return max;
+    }
+}
