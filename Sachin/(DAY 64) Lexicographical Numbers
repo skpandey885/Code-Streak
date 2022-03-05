@@ -1,0 +1,30 @@
+// QUESTION LINK: https://leetcode.com/problems/lexicographical-numbers/
+
+class Solution {
+    
+       //     TC: O(N) SC:O(1) -  OPTIMAL APPROACH
+    
+    public List<Integer> lexicalOrder(int n) {
+     
+        List<Integer> arr=new ArrayList<>();
+        
+        for(int i=1;i<=9;i++)
+            dfs(i,arr,n);
+        
+        
+        return arr;
+    }
+    
+    void dfs(int num, List<Integer> arr, int n){
+         
+        if(num>n)
+            return;
+        
+       arr.add(num);
+        
+        for(int i=0;i<=9;i++)
+         dfs(num*10+i,arr,n);
+        
+    }
+    
+}
