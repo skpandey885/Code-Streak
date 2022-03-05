@@ -1,0 +1,80 @@
+//QUESTION LINK: https://leetcode.com/problems/combination-sum/
+
+------------------------------------------------------------------------------
+                         BRUTE FORCE APPROACH
+
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        
+        List<List<Integer>> result=new ArrayList<>();
+        List<Integer> arr=new ArrayList<>();
+        
+                  solve(result,arr,0,candidates,target);
+
+        return result;
+        
+    }
+    
+  void solve(List<List<Integer>> result,List<Integer> arr, int sum,int []candidates,int target){
+      if(sum>=target){
+          
+          if(sum==target){    
+          List<Integer> temp=new ArrayList<>(arr);
+              Collections.sort(temp);
+              if(!result.contains(temp))
+          result.add(temp);
+              
+         }
+          return;
+      }
+      
+      
+       for(int i=0;i<candidates.length;i++){
+            if(candidates[i]<=target){
+                arr.add(candidates[i]);
+                  solve(result,arr,sum+candidates[i],candidates,target);
+                 arr.remove(arr.size()-1);
+            }
+           
+        }
+ 
+  } 
+    
+    
+}
+
+------------------------------------------------------------------------------
+                          OPTIMAL APPROACH
+
+class Solution {
+
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> arr = new ArrayList<>();
+
+        solve(result, arr, candidates, target, 0);
+
+        return result;
+    }
+
+    void solve(List<List<Integer>> result, List<Integer> arr, int[] candidates, int target, int start) {
+        if (target <= 0) {
+            
+            if (target == 0) {
+                List<Integer> temp = new ArrayList<>(arr);
+                result.add(temp);
+            }
+
+            return;
+        }
+        
+            for (int i = start; i < candidates.length; i++) {
+                if (candidates[i] <= target) {
+                    arr.add(candidates[i]);
+                    solve(result, arr, candidates, target - candidates[i], i);
+                    arr.remove(arr.size() - 1);
+                }
+            }
+    }
+    
+}
