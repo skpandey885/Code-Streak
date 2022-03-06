@@ -1,0 +1,101 @@
+// QUESTION LINK: https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/
+
+-----------------------------------------------------------------------------------------------------------------------
+
+// TC: () SC:O(N) - BRUTE FORCE SOLUTION
+
+class Solution {
+    int count=0;
+   ArrayList<String> ans=new ArrayList<>();
+
+    public String getHappyString(int n, int k) {
+
+        char c[]={'a','b','c'};
+
+        solve(n,k,c,"");
+
+        System.out.print(ans);
+
+        if(k>ans.size())
+            return "";
+
+        return ans.get(k-1); 
+}
+
+ void solve(int n, int k, char[] c, String asf){
+
+       int t=asf.length();
+        if(t>n)
+            return;
+
+       if(t==n){
+           count++;
+        ans.add(asf);
+       }
+
+        for(int i=0;i<3;i++)
+        {
+            if(t>0){
+            if(c[i]!=asf.charAt(t-1))
+            solve(n,k,c,asf+c[i]);
+            }else{
+                solve(n,k,c,asf+c[i]);
+            }    
+        }
+
+
+    }
+
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+// TC: () SC:O(1) - OPTIMAL SOLUTION
+
+class Solution {
+
+    int count=0;
+    String ans=new String();
+
+    public String getHappyString(int n, int k) {
+
+        char c[]={'a','b','c'};
+
+        solve(n,k,c,"");
+        return ans;
+    }
+
+
+   void solve(int n, int k, char[] c, String asf){
+
+       int t=asf.length();
+
+        if(t>n)
+         return;
+
+       if(t==n)
+           count++;
+
+      if(count==k && t==n){
+         ans=asf;
+        return;
+      }
+
+        for(int i=0;i<3;i++)
+        {
+            if(t>0){
+
+            if(c[i]!=asf.charAt(t-1))
+            solve(n,k,c,asf+c[i]);
+
+            }else{
+                solve(n,k,c,asf+c[i]);
+            }    
+        }
+
+
+
+}}
