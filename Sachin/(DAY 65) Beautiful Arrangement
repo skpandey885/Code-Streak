@@ -1,0 +1,34 @@
+// QUESTION LINK: https://leetcode.com/problems/beautiful-arrangement/
+
+// TC: O(N) 
+
+class Solution {
+    int count=0;
+    public int countArrangement(int n) {
+      
+        boolean visited[]=new boolean[n+1];
+        solve(n,n,visited);
+        
+        return count;   
+ }
+    
+  void solve(int n,int p, boolean visited[]){
+
+      if(p<1)
+      {
+         count++;
+         return;
+      }
+      
+      for(int i=1;i<=n;i++){
+          if(visited[i]==false && (i%p==0 || p%i==0 ))
+          { 
+              visited[i]=true;
+              solve(n,p-1,visited);
+              visited[i]=false;
+          }
+      }
+      
+      
+  }    
+}
