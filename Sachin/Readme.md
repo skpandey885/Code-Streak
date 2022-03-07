@@ -115,3 +115,22 @@ DAY 52 - Iterator Combination<br><hr>
 DAY 53 - Knights Tour<br><hr>
 DAY 54 - Letter Case Permutation<br>
 DAY 54 - Left View of Binary Tree<br><hr>
+DAY 55 - Print Abbreviation Using Backtracking<br>
+DAY 55 - String Reverse<br><hr>
+DAY 56 - Permutations<br><hr>
+DAY 57 - Permutations <br><hr>
+DAY 58 - Subsets<br><hr>
+DAY 59 - Circular Permutation in Binary Representation<br><hr>
+DAY 60 - Four Equidistant Points on a Grid<br>
+DAY 60 - Parallel Processing<br><hr>
+DAY 61 - Count the Holidays<br><hr>
+DAY 62 - NQueens (Branch & Bound)<br><hr>
+DAY 63 - Path with Maximum Gold<br><hr>
+DAY 64 - Combination Sum<br>
+DAY 64 - Lexicographical Numbers<br><hr>
+DAY 65 - Beautiful Arrangement<br>
+DAY 65 - Combination Sum III<br>
+DAY 65 - The k-th Lexicographical String of All Happy Strings of Length n<br><hr>
+DAY 66 - Combinations<br>
+DAY 66 - CryptArithmetic Problem<br>
+DAY 66 - Find Unique Binary String<br><hr>
