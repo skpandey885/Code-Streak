@@ -1,0 +1,65 @@
+// QUESTION LINK: https://leetcode.com/problems/find-unique-binary-string/
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// TC: O(N^2) (NOT SURE) SC: O(N) - BRUTE FORCE
+
+class Solution {  
+    List<String> result=new ArrayList<>();
+
+    public String findDifferentBinaryString(String[] nums) {
+        int n=nums.length;
+          solve(n,"");
+
+        for(int i=0;i<result.size();i++){
+            String curr=result.get(i);
+            if (!found(curr,nums))
+                return curr;
+        }
+
+        return "";
+
+    }
+
+    void solve(int n, String asf){
+
+        if(n==0){
+            result.add(asf);
+            return;
+        }
+
+        solve(n-1,asf+"0");
+        solve(n-1,asf+"1");
+
+    }
+
+    boolean found(String s, String [] nums){
+        for(int i=0;i<nums.length;i++)
+            if(s.equals(nums[i]))
+                return true;
+
+        return false;
+    }   
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+// TC: O(N) SC:O(1) - OPTIMAL APPROACH
+
+class Solution {
+    public String findDifferentBinaryString(String[] nums) {
+
+        int n=nums.length;
+        String ans="";
+
+        for(int i=0;i<n;i++){
+            char c=nums[i].charAt(i)=='0'?'1':'0';
+            ans+=c;
+        }
+
+        return ans;
+
+    }
+}
