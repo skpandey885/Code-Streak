@@ -1,0 +1,36 @@
+// QUESTION LINK: https://leetcode.com/problems/combinations/
+
+// TC: O(N^K)  (NOT SURE)   SC:O(N^2)
+  
+class Solution {  
+    public List<List<Integer>> combine(int n, int k) {
+        
+        List<List<Integer>> result=new ArrayList<>();
+        List<Integer> ans=new ArrayList<>();
+        
+        solve(result,ans,1,n,k);
+        
+    return result;
+
+    }
+    
+    void solve(List<List<Integer>> result,List<Integer> ans, int idx, int n, int k){
+        
+       if(ans.size()==k){
+            List<Integer> temp=new ArrayList<>(ans);
+            result.add(temp);
+            return;
+         }
+        
+        if(ans.size()>k || idx>n)
+            return;
+  
+        for(int i=idx;i<=n;i++){
+            ans.add(i);
+            solve(result,ans,i+1,n,k);
+            ans.remove(ans.size()-1);
+        }
+        
+        
+    }
+}
