@@ -1,0 +1,110 @@
+// QUESTION LINK: https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/recursion-and-backtracking/cryptarithmetic-official/ojquestion
+
+ // TC: O(10^N) where N is the Number of Unique Characters       SC:O(1)
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    
+    static int getNum(String s, HashMap<Character,Integer> map){
+        
+        String str="";
+        
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            int n=map.get(ch);
+            str+=n;
+        }
+        
+        return Integer.parseInt(str);
+    }
+
+  public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+    String s1 = scn.nextLine();
+    String s2 = scn.nextLine();
+    String s3 = scn.nextLine();
+
+    HashMap<Character, Integer> charIntMap = new HashMap<>();
+    String unique = "";
+    for (int i = 0; i < s1.length(); i++) {
+      if (!charIntMap.containsKey(s1.charAt(i))) {
+        charIntMap.put(s1.charAt(i), -1);
+        unique += s1.charAt(i);
+      }
+      
+    }
+
+    for (int i = 0; i < s2.length(); i++) {
+      if (!charIntMap.containsKey(s2.charAt(i))) {
+        charIntMap.put(s2.charAt(i), -1);
+        unique += s2.charAt(i);
+      }
+    }
+
+    for (int i = 0; i < s3.length(); i++) {
+      if (!charIntMap.containsKey(s3.charAt(i))) {
+        charIntMap.put(s3.charAt(i), -1);
+        unique += s3.charAt(i);
+      }
+    }
+
+    boolean[] usedNumbers = new boolean[10];
+    solution(unique, 0, charIntMap, usedNumbers, s1, s2, s3);
+  }
+
+  
+  public static void solution(String str, int idx, 
+							  HashMap<Character, Integer> map, boolean[] visited, 
+							  String s1, String s2, String s3) {
+	    
+	     if(idx>str.length())
+            return;
+            
+        if(idx==str.length()){
+            
+            int num1=getNum(s1,map);
+            int num2=getNum(s2,map);
+            int num3=getNum(s3,map);
+            
+            
+              if(num1+num2==num3){
+                
+                for(int i=0;i<26;i++){
+                      char ch =(char)('a'+i);
+                      
+                      if(map.containsKey(ch)){
+                          System.out.print(ch+"-"+map.get(ch)+" ");
+                      }
+                  }
+              System.out.println();  
+              
+              }
+            return;
+        }
+        
+    
+        
+        
+       char ch=str.charAt(idx);
+        
+        for(int i=0;i<=9;i++){
+            
+            if(!visited[i]){
+            map.put(ch,i);
+            visited[i]=true;
+          solution(str, idx+1,map,visited,s1,s2,s3);  
+               map.put(ch,-1);
+               visited[i]=false;    
+          }
+        }
+        
+        
+	    
+	    
+	    
+	    
+  }
+
+}
