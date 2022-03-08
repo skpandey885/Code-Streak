@@ -1,0 +1,52 @@
+//QUESTION LINK: https://leetcode.com/problems/path-sum-ii/
+   
+   //   TC:O(N) SC:O(N^2) - OPTIMAL SOLUTION
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+class Solution {
+
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> ls = new ArrayList<>();
+        
+        solve(result, ls, root, targetSum);
+        return result;
+    }
+
+    void solve(List<List<Integer>> result, List<Integer> ls, TreeNode root, int target) {
+        if (root == null) return;
+
+        int num = root.val;
+
+        if (root.left == null && root.right == null) {
+            if (target - num == 0) {
+                ls.add(num);
+                result.add(new ArrayList<>(ls));
+                ls.remove(ls.size() - 1);
+            }
+
+            return;
+        }
+
+        ls.add(num);
+        solve(result, ls, root.left, target - num);
+        solve(result, ls, root.right, target - num);
+        ls.remove(ls.size() - 1);
+    }
+}
