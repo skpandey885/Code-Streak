@@ -1,0 +1,39 @@
+// QUESTION LINK: https://leetcode.com/problems/maximum-compatibility-score-sum/
+// TC: O(M!MN) (NOT SURE) SC:O(N) - BRUTE FORCE SOLUTION
+
+class Solution {
+    int sum = Integer.MIN_VALUE;
+
+    int findCount(int a[], int b[]) {
+        int cc = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == b[i]) cc++;
+        }
+
+        return cc;
+    }
+    public int maxCompatibilitySum(int[][] students, int[][] mentors) {
+        boolean visited[] = new boolean[mentors.length];
+
+        solve(students, mentors, visited, 0, 0);
+
+        return sum;
+    }
+    void solve(int[][] students, int[][] mentors, boolean visited[], int max, int num) {
+        int n = students.length;
+
+        if (num == n) {
+            sum = Math.max(max, sum);
+            return;
+        }
+        int arr[] = students[num];
+
+        for (int j = 0; j < n; j++) {
+            if (!visited[j]) {
+                int brr[] = mentors[j];
+                int currCount = findCount(arr, brr);
+                visited[j] = true;
+                solve(students, mentors, visited, max + currCount, num + 1);
+                visited[j] = false;
+ }}}}
