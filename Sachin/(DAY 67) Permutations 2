@@ -1,5 +1,7 @@
 //QUESTION LINK: https://leetcode.com/problems/permutations-ii/
 
+     // TC:O(N^2)    (NOT SURE)        SC:O(N^2)      
+
 class Solution {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
