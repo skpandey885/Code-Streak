@@ -1,0 +1,34 @@
+// QUESTION LINK: https://leetcode.com/problems/subsets-ii/
+// TC:O(2^N) SC:O(N) - BRUTE FORCE
+
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        int n=nums.length;
+
+        boolean visited[]=new boolean[n];
+        List<List<Integer>> result=new ArrayList<>();
+
+        List<Integer> arr=new ArrayList<>();
+
+        Arrays.sort(nums);
+        solve(result,arr,nums,0,n);
+        return result;
+    }
+
+   void solve(List<List<Integer>> result,List<Integer> arr,int nums[], int pos,int n )
+
+    {
+        if(pos==n){ 
+           List<Integer> jj=new ArrayList<>(arr);
+
+            if(!result.contains(jj))
+           result.add(jj);
+
+          return;
+        }
+        solve(result,arr,nums,pos+1, n);
+
+           arr.add(nums[pos]);
+         solve(result,arr,nums,pos+1, n);
+           arr.remove(arr.size()-1);
+                     }}
