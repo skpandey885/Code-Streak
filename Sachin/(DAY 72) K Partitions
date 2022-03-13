@@ -1,0 +1,53 @@
+// QUESTION LINK: https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/recursion-and-backtracking/k-partitions-official/ojquestion
+
+// TC: O(N^N) (NOT SURE)        SC:O(1)
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+static int counter=1;
+	public static void solution(int i, int n, int k, int rssf, ArrayList<ArrayList<Integer>> ans) {
+		
+		if(i>n){
+		    if(rssf==k){
+		         System.out.print(counter+". ");
+		        for(ArrayList<Integer> xx: ans)
+		        System.out.print(xx+" ");
+		        counter++;
+		        System.out.println();
+		    }
+		    
+		    
+		    return;
+		}
+		
+		for(int j=0;j<ans.size();j++){
+		    ArrayList<Integer> arr=ans.get(j);
+		    if(arr.size()>0){
+		        arr.add(i);
+		        solution(i+1,n,k,rssf,ans);
+		        arr.remove(arr.size()-1);
+		    }else{
+		        arr.add(i);
+		        solution(i+1,n,k,rssf+1,ans);
+		        arr.remove(arr.size()-1);
+		        break;
+		    }
+		}
+		
+	}
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		int k = scn.nextInt();
+		ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+		for(int i  = 0; i < k; i++) {
+			ans.add(new ArrayList<>());
+		}
+		solution(1, n, k, 0, ans);
+
+	}
+
+}
