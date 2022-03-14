@@ -1,0 +1,35 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1#
+
+class Solution {
+
+    public static ArrayList<String> findPath(int[][] m, int n) {
+    
+    ArrayList<String> ans=new ArrayList<>();
+    
+    boolean visited[][]=new boolean[n][n];
+    
+    solve(ans,0,0,"",m,n,visited);
+    return ans;
+    
+    }
+    
+   static void solve(ArrayList<String> ans, int i, int j, String asf, int[][] m, int n, boolean visited[][]){
+       
+       if(i>=n || j>=n || i<0 || j<0 || visited[i][j] || m[i][j]==0)
+          return;
+          
+          if(i==n-1 && j==n-1){
+            ans.add(asf);
+            return;
+         }
+            
+            visited[i][j]=true;
+          
+           solve(ans,i+1,j,asf+"D",m,n,visited);
+           solve(ans,i-1,j,asf+"U",m,n,visited);
+           solve(ans,i,j-1,asf+"L",m,n,visited);
+           solve(ans,i,j+1,asf+"R",m,n,visited);
+            visited[i][j]=false;
+        
+    }
+}
