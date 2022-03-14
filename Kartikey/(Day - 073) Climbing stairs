@@ -1,0 +1,26 @@
+//  https://leetcode.com/problems/climbing-stairs/
+
+
+class Solution {
+public:
+    int solve(int n,vector<int> &ans,int i)
+    {
+        if(i==n)
+            return 1;
+        if(i>n)
+        
+            return 0;
+        if(ans[i]!=-1)
+            return ans[i];
+            
+        return ans[i]=solve(n,ans,i+1) +   solve(n,ans,i+2);
+        
+        
+    }
+    int climbStairs(int n) {
+    
+        vector<int>ans(n+2,-1);
+        int i=0;
+        return solve(n,ans,i);
+    }
+};
