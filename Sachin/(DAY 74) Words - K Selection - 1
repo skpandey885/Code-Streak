@@ -1,0 +1,50 @@
+// QUESTION LINK: https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/recursion-and-backtracking/words-kselection-1-official/ojquestion
+//  TC:O (2^N)     SC:O(1)
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+
+  public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+    String str = scn.nextLine();
+    int k = scn.nextInt();
+
+    HashSet<Character> unique = new HashSet<>();
+    String ustr = "";
+    for (char ch : str.toCharArray()) {
+      if (unique.contains(ch) == false) {
+        unique.add(ch);
+        ustr += ch;
+      }
+    }
+
+    combination(0,k,"",ustr);
+  }
+
+
+  public static void combination(int i, int k, String asf, String str ) {
+        
+    
+
+       if(i>=str.length()){
+               if(k==0){
+             System.out.println(asf);
+      
+        }
+             return;
+       
+           
+       }          
+        combination(i+1,k-1,asf+str.charAt(i),str);
+     
+        combination(i+1,k,asf,str);
+
+
+
+  }
+
+}
