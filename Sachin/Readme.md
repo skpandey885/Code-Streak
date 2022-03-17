@@ -134,3 +134,17 @@ DAY 65 - The k-th Lexicographical String of All Happy Strings of Length n<br><hr
 DAY 66 - Combinations<br>
 DAY 66 - CryptArithmetic Problem<br>
 DAY 66 - Find Unique Binary String<br><hr>
+DAY 67 - Maximum Compatibility Score Sum<br>
+DAY 67 - Path Sum II<br>
+DAY 67 - Permutations 2<br><hr>
+DAY 68 - Subsets 2<br><hr>
+DAY 69 - Friends Pairing<br><hr>
+DAY 70 - Rotate List<br><hr>
+DAY 71 - Combination Sum II<br><hr>
+DAY 72 - K Partitions<br><hr>
+DAY 73 - Rat in a Maze<br><hr>
+DAY 73 - Word Search <br><hr>
+DAY 74 - Partition Array Into Two Arrays to Minimize Sum Difference <br>
+DAY 74 - Words - K Selection - 1<br><hr>
+DAY 75 - Deepest Leaves Sum<br>
+DAY 75 - Young Physicist<br><hr>
