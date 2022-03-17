@@ -142,7 +142,7 @@ DAY 69 - Friends Pairing<br><hr>
 DAY 70 - Rotate List<br><hr>
 DAY 71 - Combination Sum II<br><hr>
 DAY 72 - K Partitions<br><hr>
-DAY 73 - Rat in a Maze<br><hr>
+DAY 73 - Rat in a Maze<br>
 DAY 73 - Word Search <br><hr>
 DAY 74 - Partition Array Into Two Arrays to Minimize Sum Difference <br>
 DAY 74 - Words - K Selection - 1<br><hr>
