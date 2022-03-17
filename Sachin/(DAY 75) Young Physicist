@@ -1,0 +1,51 @@
+// QUESTION LINK: https://codeforces.com/problemset/problem/69/A
+// TC: O(N) SC:O(N)
+
+import java.util.*;
+
+/**
+ * Main
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+      
+        int n=input.nextInt();
+        int arr[][]=new int[n][3];
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<3;j++){
+                arr[i][j]=input.nextInt();
+            }
+        }
+
+
+            
+        boolean flag=true;
+
+        for(int i=0;i<3;i++){
+            int sum=0;
+            for(int j=0;j<n;j++){
+                  sum+=arr[j][i];
+            }
+          
+            if(sum!=0)
+            flag=false;
+        }
+
+    if(flag)
+        System.out.println("YES");
+  else
+       System.out.println("NO");
+
+
+       
+
+
+
+         
+   
+
+    }
+}
