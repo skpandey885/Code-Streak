@@ -1,0 +1,27 @@
+// QUESTION LINK : https://leetcode.com/problems/count-good-nodes-in-binary-tree/
+// TC: O(N) - SC: O(1) - OPTIMAL SOLUTION
+
+class Solution {
+
+    public int goodNodes(TreeNode root) {
+        return traverse(root,Integer.MIN_VALUE);
+
+    }
+
+   int traverse(TreeNode root, int max){
+        if(root==null)
+            return 0;
+
+        int count=0;
+
+        if(max<=root.val)
+            count++;
+
+        max=Math.max(root.val,max);
+
+       int a= traverse(root.left,max);
+        int b=traverse(root.right,max);
+
+                return count+a+b;
+
+    }}
