@@ -148,5 +148,7 @@ DAY 74 - Partition Array Into Two Arrays to Minimize Sum Difference <br>
 DAY 74 - Words - K Selection - 1<br><hr>
 DAY 75 - Deepest Leaves Sum<br>
 DAY 75 - Young Physicist<br><hr>
+DAY 76 - Smallest Subsequence of Distinct Characters<br>
+DAY 76 - Sum of Nodes with Even-Valued Grandparent<br><hr>
 DAY 77 - Find Elements in a Contaminated Binary Tree<br>
 DAY 77 - Count Good Nodes in Binary Tree<br><hr>
