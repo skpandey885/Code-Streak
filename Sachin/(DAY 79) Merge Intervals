@@ -1,0 +1,51 @@
+// QUESTION LINK: https://leetcode.com/problems/merge-intervals/
+
+// TC: O(N) SC:O(N) - OPTIMAL APPROACH
+
+class Solution {
+    public int[][] merge(int[][] intervals) {
+
+        int n=intervals.length;
+
+     Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0])); 
+
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();    
+
+        int minA=intervals[0][0];
+        int prev=intervals[0][1];
+
+        for(int i=0;i<intervals.length;i++){
+              if(intervals[i][0]<=prev){
+                  System.out.println(intervals[i][1]);
+                  prev=Math.max(prev,intervals[i][1]);
+               }else{
+
+                ArrayList<Integer> ls2=new ArrayList<>();
+                  ls2.add(minA);
+                  ls2.add(prev);
+                  ans.add(ls2);
+                  minA=intervals[i][0];
+                  prev=intervals[i][1];
+
+              } 
+
+            if(i==n-1){
+                   ArrayList<Integer> ls2=new ArrayList<>();
+                  ls2.add(minA);
+                  ls2.add(prev);
+                  ans.add(ls2);
+            }
+
+
+        }
+
+        int ff[][]=new int[ans.size()][2];
+        for(int i=0;i<ans.size();i++)
+            for(int j=0;j<2;j++)
+                ff[i][j]=ans.get(i).get(j);
+
+        return ff;
+
+    }
+
+}
