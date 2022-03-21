@@ -1,0 +1,44 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1/
+
+//     TC: O(2*N)      SC:O(N^2)
+
+class Solution{
+
+    static int dp[][]=new int[110][100010] ;
+ 
+    
+    static Boolean isSubsetSum(int N, int arr[], int sum){
+     
+     for(int i=0;i<dp.length;i++)
+     for(int j=0;j<dp[i].length;j++)
+        dp[i][j]=-1;
+       
+       return isSubsetSum2(N,arr,sum)==1?true:false;
+    }
+    
+    static int isSubsetSum2(int N, int arr[], int sum){
+         
+          if(sum==0)
+          return 1;
+          
+      if(N<=0){
+          return 0;
+      }
+      
+      if(dp[N][sum]!=-1)
+      return dp[N][sum];
+      
+      
+         int b=isSubsetSum2(N-1,arr,sum);
+        
+        if(arr[N-1]<=sum){
+         int a=isSubsetSum2(N-1,arr,sum-arr[N-1]);
+            dp[N][sum]= a | b;
+         return dp[N][sum];
+        }
+   
+         dp[N][sum]=b;
+        return dp[N][sum];
+       
+    }
+}
