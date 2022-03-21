@@ -1,0 +1,48 @@
+// QUESTION LINK: https://leetcode.com/problems/partition-equal-subset-sum/
+
+
+
+class Solution {
+    
+    int dp[][];
+
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        int n = nums.length;
+        for (int i : nums) sum += i;
+
+        dp = new int[n + 1][sum];
+
+        for (int i = 0; i < dp.length; i++)
+            for (int j = 0; j < dp[i].length; j++) 
+                dp[i][j] = -1;
+
+        if (sum % 2 != 0) return false;
+
+        int res = isSubsetSum(n, nums, sum / 2);
+        if (res == 1) return true;
+
+        return false;
+    }
+
+    int isSubsetSum(int N, int arr[], int sum) {
+        if (sum == 0) return 1;
+
+        if (N <= 0) {
+            return 0;
+        }
+
+        if (dp[N][sum] != -1) return dp[N][sum];
+
+        int b = isSubsetSum(N - 1, arr, sum);
+
+        if (arr[N - 1] <= sum) {
+            int a = isSubsetSum(N - 1, arr, sum - arr[N - 1]);
+            dp[N][sum] = a | b;
+            return dp[N][sum];
+        }
+
+         dp[N][sum] = b;
+        return dp[N][sum];
+    }
+}
