@@ -1,0 +1,54 @@
+//QUESTION LINK: https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1#
+
+// TC: O(2^N) SC:O(N*SUM)
+
+
+class Solution{
+    static int dp[][];
+  
+  static int mod =(int) Math.pow(10,9)+7;
+   
+	 static public int perfectSum(int arr[],int n, int sum) 
+	{ 
+	      dp=new int[n+1][sum+1];
+	         
+        for(int i=0;i<dp.length;i++)
+        for(int j=0;j<dp[i].length;j++)
+             dp[i][j]=-1;
+        
+        
+          return isSubsetSum(n,arr,sum);
+	} 
+	
+	static int isSubsetSum(int N, int arr[], int sum){
+
+ 
+     	if(sum==0 && N==0)
+			return 1;
+ 
+      	if(N==0 && sum!=0)
+          return 0;
+	
+        if(dp[N][sum]!=-1)
+          return dp[N][sum];
+      
+    
+        if(arr[N-1]<=sum){
+            
+         int a=isSubsetSum(N-1,arr,sum-arr[N-1]);
+         int b=isSubsetSum(N-1,arr,sum);
+            
+            dp[N][sum]= (a + b)%mod;
+            
+          return dp[N][sum];
+        }
+   
+        dp[N][sum]=isSubsetSum(N-1,arr,sum)%mod;;
+       
+        return dp[N][sum];
+       
+    }
+    
+	
+	
+}
