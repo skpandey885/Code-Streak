@@ -1,0 +1,70 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/minimum-sum-partition3317/1/#
+// TC: O(N^2)     SC:O(N)   
+
+
+class Solution
+{
+	public int minDifference(int nums[], int n) 
+	{
+	    int min = Integer.MAX_VALUE;
+        int sum=0;
+        for(int p: nums)
+            sum+=p;
+            
+    ArrayList<Integer> arr=isSubsetSum(n,nums,sum);
+        
+     for(int i=0;i<arr.size();i++){
+         int val=sum-2*arr.get(i);
+         min=Math.min(min,val);
+     }
+        
+        return min;
+	}
+	
+	 static ArrayList<Integer> isSubsetSum(int N, int arr[], int sum){
+     
+      boolean dp[][]=new boolean[N+1][sum+1];
+      
+     for(int i=0;i<dp.length;i++)
+     for(int j=0;j<dp[i].length;j++)
+       {
+           if(i==0)
+           dp[i][j]=false;
+           
+           if(j==0)
+           dp[i][j]=true;
+       }
+       
+       for(int i=1;i<dp.length;i++){
+           for(int j=1;j<dp[i].length;j++){
+               
+               if(arr[i-1]<=j){
+                  boolean a=dp[i-1][j-arr[i-1]];
+                  boolean b=dp[i-1][j];
+                  dp[i][j]=a | b;
+               }else{
+                   dp[i][j]=dp[i-1][j];
+               }
+   
+           }
+       }
+       
+       ArrayList<Integer> ans=new ArrayList<>();
+       
+       for(int j=0;j<=sum/2;j++){
+           if(dp[N][j])
+            ans.add(j);
+       }
+
+      
+      
+      return ans;
+  
+    }
+    
+	
+
+	
+	
+	
+}
