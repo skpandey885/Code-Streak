@@ -1,0 +1,52 @@
+// QUESTION LINK: https://leetcode.com/problems/count-sorted-vowel-strings/
+// TC: Exponential SC: O(1) - BRUTE FORCE APPROACH
+
+class Solution {
+    public int countVowelStrings(int n) {
+        return solve(n, 0);
+    }
+
+    int solve(int n, int idx) {
+        if (n == 0) {
+            return 1;
+        }
+
+        int sum = 0;
+        for (int i = idx; i < 5; i++) {
+            sum += solve(n - 1, i);
+        }
+
+        return sum;
+    }}
+    
+    
+// TC: LESSER THAN BRUTE FORCE SC:O(1) - MODERATE APPROACH
+
+class Solution {
+
+    int dp[][]=new int[60][10];
+    public int countVowelStrings(int n) {
+
+        for(int i=0;i<dp.length;i++)
+        for(int j=0;j<dp[i].length;j++)
+                dp[i][j]=-1;
+
+        return solve(n, 0);
+    }
+
+    int solve(int n, int idx) {
+        if (n == 0) {
+            return 1;
+        }
+
+        if(dp[n][idx]!=-1)
+            return dp[n][idx];
+
+        int sum = 0;
+        for (int i = idx; i < 5; i++) {
+            sum += solve(n - 1, i);
+        }
+
+        return dp[n][idx]=sum;
+    }
+}
