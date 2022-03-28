@@ -1,0 +1,75 @@
+// QUESTION LINK: https://practice.geeksforgeeks.org/problems/rod-cutting0840/1
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+// TC: Exponential           SC:O(1) - BRUTE FORCE
+
+class Solution{
+    public int cutRod(int price[], int n) {
+      return solve(price,n,n,0);
+    }
+    
+    static int solve(int price[], int n, int totalLength, int sum){
+        
+        if(totalLength==0 || n==0)
+          return sum;
+    
+    
+        
+        
+        int y=solve(price,n-1,totalLength,sum),x=-10;
+        
+        if(n<=totalLength){
+            x=solve(price,n,totalLength-n,sum+price[n-1]);
+        }
+        
+        return (int) Math.max(x,y);
+}}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+// TC: Lesser than Exponential           SC:O(N^2) - BRUTE FORCE
+
+
+class Solution{
+    
+      static int dp[][];
+      
+public int cutRod(int price[], int n) {
+        
+        dp=new int[n+10][n+10];
+        
+        for(int i=0;i<dp.length;i++)
+        for(int j=0;j<dp[i].length;j++)
+          dp[i][j]=-1;
+          
+          int len[]=new int[n];
+          
+          for(int i=0;i<n;i++)
+              len[i]=i+1;
+          
+  
+      return solve(price,n,len,n);
+    }
+    
+  static int solve(int price[], int n, int len[] , int totalLength ){
+        
+        if(totalLength==0 || n==0){
+          return 0;
+        }
+        
+      if(dp[n][totalLength]!=-1)
+      return dp[n][totalLength];
+   
+   
+        int x=Integer.MIN_VALUE;
+        
+        if(len[n-1]<=totalLength)
+            x=price[n-1]+solve(price,n,len,totalLength-len[n-1]);
+        
+         int y=solve(price,n-1,len,totalLength);
+        
+        return dp[n][totalLength]=(int) Math.max(x,y);
+   
+    }
+    
+    
+}
