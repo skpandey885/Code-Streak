@@ -1,0 +1,93 @@
+// QUESTION LINK: https://leetcode.com/problems/all-possible-full-binary-trees/
+
+------------------------------------------------------------------------------------------------------------------------------
+
+// TC: O(N^4) (NOT SURE) SC:O(1) - BRUTE FORCE
+
+class Solution {
+    public List<TreeNode> allPossibleFBT(int n) {
+        if(n%2==0)
+            return new ArrayList<>();
+
+        return helper(n);
+    }
+      public List<TreeNode> helper(int n) {
+
+          if(n==1){
+              List<TreeNode> ls=new ArrayList<>();
+              ls.add(new TreeNode(0));
+              return ls;
+          }
+
+          List<TreeNode> res=new ArrayList();
+
+          for(int i=1;i<n;i+=2){
+
+              List<TreeNode> left=helper(i);
+              List<TreeNode> right=helper(n-i-1);
+
+                for(TreeNode lft: left){
+               for(TreeNode rght: right){
+              TreeNode root=new TreeNode(0);
+              root.left=lft;
+              root.right=rght;
+
+
+              res.add(root);
+
+}}  
+
+
+          }
+
+          return res;
+}}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+TC: LESSER THAN O(N^4) (NOT SURE) SC:O(N) - MODERATE
+
+class Solution {
+
+    public List<TreeNode> allPossibleFBT(int n) {
+        if (n % 2 == 0) return new ArrayList<>();
+
+        Map<Integer, List<TreeNode>> map=new HashMap<>();
+
+        return helper(n,map);
+    }
+
+    public List<TreeNode> helper(int n,Map<Integer, List<TreeNode>> map) {
+        if (n == 1) {
+            List<TreeNode> ls = new ArrayList<>();
+            ls.add(new TreeNode(0));
+            return ls;
+        }
+
+        if(map.containsKey(n))
+            return map.get(n);
+
+
+        List<TreeNode> res = new ArrayList();
+
+        for (int i = 1; i < n; i += 2) {
+            List<TreeNode> left = helper(i,map);
+            List<TreeNode> right = helper(n - i - 1,map);
+
+            for (TreeNode lft : left) {
+                for (TreeNode rght : right) {
+                    TreeNode root = new TreeNode(0);
+                    root.left = lft;
+                    root.right = rght;
+
+                    res.add(root);
+                }
+            }
+        }
+
+
+        map.put(n,res);
+        return res;
+    }
+}
