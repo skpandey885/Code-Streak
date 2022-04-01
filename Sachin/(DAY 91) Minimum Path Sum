@@ -1,0 +1,103 @@
+// QUESTION LINK: https://leetcode.com/problems/minimum-path-sum/
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+// Brute Force Approach
+// TC: Exponential & SC: O(1)
+// It will throw TLE error.
+
+class Solution {
+    public int minPathSum(int[][] grid) {
+        
+        int m=grid.length;
+        int n=grid[0].length;
+        
+        return solve(grid,0,0,m,n);
+    }
+    
+    int solve(int grid[][], int i, int j, int m, int n){
+        
+        if(i>=m || j>=n)
+            return 100000000;
+        
+        if(i==m-1 && j==n-1)
+            return grid[i][j];
+        
+        int sum1=grid[i][j]+solve(grid,i+1,j,m,n);
+        int sum2=grid[i][j]+solve(grid,i,j+1,m,n);
+        
+        return Math.min(sum1,sum2);
+}}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Memoization Approach
+// TC: Lesser than Exponential & SC: O(N)
+// It is a Moderate solution. Not fully optimised.
+
+
+class Solution {
+    public int minPathSum(int[][] grid) {
+        
+        int m=grid.length;
+        int n=grid[0].length;
+        Map<String, Integer> map=new HashMap<>();
+        
+        return solve(grid,0,0,m,n,map);
+    }
+    
+    int solve(int grid[][], int i, int j, int m, int n, Map<String, Integer> map){
+        
+        if(i>=m || j>=n)
+            return 100000000;
+        
+        if(i==m-1 && j==n-1)
+            return grid[i][j];
+        
+        String key=i+"-"+j;
+        
+        if(map.containsKey(key))
+            return map.get(key);
+        
+        int sum1=grid[i][j]+solve(grid,i+1,j,m,n,map);
+        int sum2=grid[i][j]+solve(grid,i,j+1,m,n,map);
+        
+        map.put(key, Math.min(sum1,sum2));
+        
+        return Math.min(sum1,sum2);
+}}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// DP Approach
+// TC:O(M x N) & SC: O(M x N)
+// Fully Optimised
+
+class Solution {
+    public int minPathSum(int[][] grid) {
+        
+        int m=grid.length;
+        int n=grid[0].length;
+        int dp[][]=new int[m][n];
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(i==0 && j==0){
+                    dp[i][j]=grid[i][j];
+                }else if(i==0){
+                     dp[i][j]=grid[i][j]+dp[i][j-1];
+                }else if(j==0){
+                    dp[i][j]=grid[i][j]+dp[i-1][j];
+                }else{
+                      int sum1=grid[i][j]+dp[i-1][j];
+                      int sum2=grid[i][j]+dp[i][j-1];
+                    dp[i][j]=Math.min(sum1,sum2);
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        return dp[m-1][n-1];
+    }}
