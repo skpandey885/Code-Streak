@@ -1,0 +1,21 @@
+// QUESTION LINK: https://leetcode.com/problems/last-stone-weight/
+// TC:O(NLOGN) SC:O(N)
+
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+       
+        PriorityQueue<Integer> p=new PriorityQueue<>(Collections.reverseOrder());
+         
+        for(int i: stones){
+            p.add(i);    
+        }
+        
+        while(p.size()>1){
+            int top=p.poll();
+            p.add(top-p.poll());            
+        }
+        
+        return p.peek();    
+        
+    }
+}
