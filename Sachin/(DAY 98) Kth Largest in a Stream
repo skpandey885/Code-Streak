@@ -1,0 +1,27 @@
+// QUESTION LINK: https://leetcode.com/problems/kth-largest-element-in-a-stream/description/
+// TC: O(N) SC: O(N)
+
+class KthLargest {
+    
+    final PriorityQueue<Integer> pq;
+    final int k;
+    
+    public KthLargest(int k, int[] nums) {
+        this.k = k;
+        pq = new PriorityQueue<>(k);
+        for(Integer item : nums){
+            pq.offer(item);
+            if(pq.size() > k){
+                pq.poll();
+            }
+        }
+    }
+    
+    public int add(int val) {
+        pq.offer(val);
+        if(pq.size() > this.k){
+            pq.poll();
+        }
+        return pq.peek();
+    }
+}
