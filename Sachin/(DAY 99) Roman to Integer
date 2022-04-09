@@ -1,0 +1,54 @@
+// QUESTION LINK: https://leetcode.com/problems/roman-to-integer/
+// TC: O(N) SC: O(N)
+
+class Solution {
+    public int romanToInt(String s) {
+        int sum=0;
+        
+        for(int i=0;i<s.length();i++){
+          String a=String.valueOf(s.charAt(i));
+           if(i+1<s.length()){
+               String b= String.valueOf(s.charAt(i+1));
+              if(a.equals("I") && b.equals("V")){
+                  sum+=4;
+                i++;
+              continue;}
+               else if(a.equals("I") && b.equals("X")){
+                   sum+=9;   i++;
+              continue;}
+                   else if(a.equals("X") && b.equals("L")){
+                       sum+=40;   i++;
+              continue;}
+               else if(a.equals("X") && b.equals("C")){
+                   sum+=90;  i++;
+              continue;}
+              else if(a.equals("C") && b.equals("D")){
+                  sum+=400;  i++;
+              continue;}
+                else if(a.equals("C") && b.equals("M")){
+                    sum+=900;  i++;
+              continue;}
+                   
+          }
+            sum+=getVal(a);
+            
+        }
+        return sum;
+        
+    }
+    static int getVal(String s){
+       
+        switch(s){
+            case "I": return 1;
+            case "V":return 5;
+            case "X":return 10;
+            case "L":return 50;
+            case "C": return 100;
+            case "D": return 500;
+            case "M":return 1000;
+        }
+        return 0;
+        
+    }
+    
+}
