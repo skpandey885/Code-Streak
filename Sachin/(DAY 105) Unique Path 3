@@ -1,0 +1,58 @@
+// QUESTION LINK: https://leetcode.com/problems/unique-paths-iii/
+class Solution {
+    public int uniquePathsIII(int[][] grid) {
+    
+      boolean visited[][]=new boolean[grid.length][grid[0].length];
+    
+        int m=grid.length,n=grid[0].length;
+        int zeros=0;
+        int p=0,s=0;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==1){
+                    p=i;
+                    s=j;
+                }else if(grid[i][j]==0){
+                    zeros++;
+                }
+            }
+        }
+        
+      return solve(p,s,grid,m,n,visited,zeros);
+
+    }
+    
+    int solve(int i, int j, int grid[][], int m, int n, boolean visited[][], int zeros){
+        
+        if(i<0 || i>=m || j<0 || j>=n || visited[i][j] || grid[i][j]==-1){
+            return 0;
+        }
+        
+           if(grid[i][j]==2){
+               if(zeros==-1)
+               return 1;
+               else
+                   return 0;
+        }
+        
+        visited[i][j]=true;
+        
+        int a=solve(i+1,j,grid,m,n,visited,zeros-1);
+        a+=solve(i,j+1,grid,m,n,visited,zeros-1);
+        a+=solve(i-1,j,grid,m,n,visited,zeros-1);
+        a+=solve(i,j-1,grid,m,n,visited,zeros-1);
+        
+        visited[i][j]=false;
+        
+        return a;
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+}
