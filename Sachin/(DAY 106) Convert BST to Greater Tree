@@ -1,0 +1,50 @@
+// QUESTION LINK: https://leetcode.com/problems/convert-bst-to-greater-tree/
+// TC: O(N^2) SC:O(N) - BRUTE FORCE
+
+
+class Solution {
+    public TreeNode convertBST(TreeNode root) {
+
+        ArrayList<Integer> arr=new ArrayList<>();
+        traverse(root,arr);
+        Collections.sort(arr);
+        solve(root, arr);
+
+        return root;
+    }
+
+    void solve(TreeNode root, ArrayList<Integer> arr){
+
+        if(root==null)
+            return;
+
+        root.val=helper(root.val,arr);
+
+        solve(root.left,arr);
+        solve(root.right,arr);
+    }
+
+
+    int helper(int num, ArrayList<Integer> arr){
+
+        int sum=0;
+        int i=arr.size()-1;
+
+
+        while(i>=0  && arr.get(i)>=num ){
+            sum+=arr.get(i);
+            i--;
+        }
+
+        return sum;
+    }
+
+    void traverse(TreeNode root, ArrayList<Integer> arr){
+
+        if(root==null) return;
+
+        arr.add(root.val);
+        traverse(root.left,arr);
+        traverse(root.right, arr);
+    }
+}
