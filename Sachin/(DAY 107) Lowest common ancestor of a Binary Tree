@@ -1,0 +1,24 @@
+// QUESTION LINK: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+// TC: O(N) SC: O(1) - OPTIMAL SOLUTION
+
+class Solution {
+
+    TreeNode ans=new TreeNode();
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q){
+        if(root==null)
+            return root;
+
+        if(root==p || root==q)
+            return root;
+
+        TreeNode a=lowestCommonAncestor(root.left,p,q);
+        TreeNode b=lowestCommonAncestor(root.right,p,q);
+
+        if(a==null)
+            return b;
+        else if(b==null)
+            return a;
+        else
+            return root;
+
+    }}
