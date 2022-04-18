@@ -1,36 +1,43 @@
 // QUESTION LINK: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
-// TC: O(N)     SC:O(N) - MODERATE
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
- 
+// TC: O(N) SC: O(N) - BRUTE FORCE
+
 class Solution {
-    
+
     public int kthSmallest(TreeNode root, int k) {
         ArrayList<Integer> arr = new ArrayList<>();
-      
-        traverse(root, arr);
+      traverse(root,arr);
         return arr.get(k - 1);
     }
 
     void traverse(TreeNode root, ArrayList<Integer> arr) {
+        if(root==null) 
+            return;
+
+        traverse(root.left,arr);
+        arr.add(root.val);
+        traverse(root.right,arr);
+    }
+}
+
+// TC: O(N) SC:O(1) - OPTIMAL
+
+class Solution {
+    int ans = Integer.MIN_VALUE, temp = 1;
+
+    public int kthSmallest(TreeNode root, int k) {
+        traverse(root, k);
+        return ans;
+    }
+
+    void traverse(TreeNode root, int k) {
         if (root == null) return;
 
-        traverse(root.left, arr);
-        arr.add(root.val);
-        traverse(root.right, arr);
+        traverse(root.left, k);
+
+        if (temp == k && ans == Integer.MIN_VALUE) ans = root.val;
+
+        temp++;
+        traverse(root.right, k);
     }
 }
