@@ -1,0 +1,68 @@
+// QUESTION LINK: https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/
+// TC: O(NLOGN) SC:O(N) - MODERATE
+
+class Solution {
+    public int minimumRounds(int[] tasks) {
+
+      int max= Integer.MIN_VALUE;
+        Map<Integer,Integer> map=new LinkedHashMap<>();
+
+      for(int i: tasks){
+          if(map.containsKey(i)){
+              map.put(i,map.get(i)+1);
+          }else{
+              map.put(i,1);
+          }
+      }
+
+   List<Integer> intList = new ArrayList<Integer>(map.values());
+
+Collections.sort(intList, new Comparator<Integer>() {
+
+    public int compare(Integer o1, Integer o2) {
+        // for descending order
+        return o1 - o2;
+    }
+});
+
+
+          int rounds=0;
+
+       for(int i=0;i<intList.size();i++){
+           int val=intList.get(i);
+
+           if(val<2){
+               return -1;
+           }
+
+           if(val%3==0){
+               rounds+=val/3;
+           }else if(val%2==0){
+               int temp=val;
+               while(temp%3!=0){
+                   temp-=2;
+                   rounds++;
+               }
+                   rounds+=temp/3;
+
+           }else{
+               if(val%3==2){
+                   rounds+=val/3;
+                   rounds++;
+               }else if(val%3==1){
+
+                   while(val%3!=0){
+                       val-=2;
+                       rounds++;
+                   }
+                   rounds+=val/3;
+               }
+           }
+
+       }
+
+        return rounds;
+
+
+    }
+}
