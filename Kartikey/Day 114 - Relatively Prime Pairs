@@ -1,0 +1,73 @@
+//https://codeforces.com/problemset/problem/1051/B
+
+
+catch = GCD of consecutive numbers is 1. e.g gcd of 1 2 is 1
+
+
+
+#include <bits/stdc++.h>
+using namespace std; 
+ 
+ 
+const int N = int(1e5 + 3);
+ 
+ 
+/* 
+   code by:
+   kartikey singh
+   
+*/   
+ 
+#define ll               long long int
+#define Y                cout << ("YES\n")
+#define N                cout << ("NO\n")
+#define fr               for(long long int i =0; i<n; i++)
+#define pb               push_back
+#define vll              vector<long long int> 
+ 
+ 
+ 
+ 
+/*Imp. Tips:
+ 
+ASCII values             -> 65 < uppercase < 90
+                         -> 97 < lowercase < 122
+swap 2 element in vector -> reverse(a.begin()+index1 , a.begin() + index2) 
+sort vector              -> sort(v.begin(), v.end());
+gcd inbuilt function     -> __gcd(x1, x2);
+print vector  e1         ->   for (auto i: e1)     std::cout << i << ' ';
+ 
+ 
+*/
+
+
+void solution(){
+    ll l, r;
+    cin >> l >> r;
+    
+    cout << "YES" << endl;
+    
+    for(int i =0; i<r-l+1; i = i+2){
+        cout << l+i << " " << (l+i+1) << endl;
+    }
+}
+ 
+int main() {
+    
+    
+     #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt" , "w", stdout);
+      #endif
+        
+        ll t;
+        cin >> t;
+        while(t--){
+            solution();
+        }
+        
+   
+   
+   return 0;     
+
+}
