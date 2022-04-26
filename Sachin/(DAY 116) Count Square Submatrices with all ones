@@ -1,0 +1,55 @@
+// QUESTION LINK: https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+
+class Solution {
+
+    public int countSquares(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+
+        int count = 0;
+        int min = Math.min(m, n);
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 1) {
+                    count++;
+
+                    count += countOthers(matrix, i, j);
+                }
+            }
+        }
+
+        return count;
+    }
+
+    int countOthers(int[][] matrix, int i, int j) {
+        int count = 0;
+
+        for (int k = 1; (k < matrix.length && k < matrix[0].length); k++) {
+            if (checkRows(matrix, i, j, k)) count++;
+        }
+
+        return count;
+    }
+
+    boolean checkRows(int matrix[][], int i, int j, int len) {
+        int start = i;
+        int end = i + len;
+        int end2 = j + len;
+        if (end < matrix.length && end2 < matrix[0].length) {
+            while (start <= end) {
+                int count = 0;
+                for (int k = j; k <= end2; k++) {
+                    if (matrix[start][k] == 1) count++;
+                }
+
+                if (count != len + 1) return false;
+
+                start++;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+}
