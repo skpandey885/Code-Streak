@@ -1,0 +1,30 @@
+// https://leetcode.com/problems/max-chunks-to-make-sorted-ii/
+
+
+class Solution {
+public:
+    int maxChunksToSorted(vector<int>& arr)
+    {
+            
+    
+        std::vector<int> sortedArr = arr;
+        std::sort(sortedArr.begin(), sortedArr.end());
+        
+    
+        unsigned long long prefix_sum_arr = 0;
+        unsigned long long prefix_sum_sorted_arr = 0;
+        int count = 0;
+        for (int i = 0; i < arr.size(); i++)
+        {
+            prefix_sum_arr += arr[i];
+            prefix_sum_sorted_arr += sortedArr[i];
+
+            if (prefix_sum_arr == prefix_sum_sorted_arr)
+            {
+                count++;
+            }
+        }
+
+        return count;        
+    }
+};
