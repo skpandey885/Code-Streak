@@ -1,0 +1,45 @@
+// QUESTION LINK: https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/
+// TC: O(3^N) SC:O(N) - MEMOIZATION
+
+class Solution {
+
+    public int maxProduct(String s) {
+        Map<String, Integer> map=new HashMap<>();
+        int res = solve(s, "", "", 0,map);
+        return res;
+    }
+
+    int solve(String s, String asf1, String asf2, int idx, Map<String, Integer> map) {
+        if (idx == s.length()) {
+            if (palindrome(asf1) && palindrome(asf2)) return (asf1.length() * asf2.length());
+
+            return 0;
+        }
+
+        String key=asf1+"-"+asf2+"-"+idx;
+
+            if(map.containsKey(key))
+                return map.get(key);
+
+        char ch = s.charAt(idx);
+
+        int a = solve(s, asf1 + ch, asf2, idx + 1,map);
+        int b = solve(s, asf1, asf2 + ch, idx + 1,map);
+        int c = solve(s, asf1, asf2, idx + 1,map);
+        int val=Math.max(c, Math.max(a, b));
+
+        map.put(key,val);
+        return val;
+    }
+
+    boolean palindrome(String s) {
+        int i = 0, j = s.length() - 1;
+
+        while (i <= j) {
+            if (s.charAt(i) != s.charAt(j)) return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
