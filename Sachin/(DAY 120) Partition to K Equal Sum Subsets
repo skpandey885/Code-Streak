@@ -1,0 +1,34 @@
+// QUESTION LINK: https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
+
+class Solution {
+
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        if (k > nums.length) return false;
+        int sum = 0;
+        for (int i : nums) sum += i;
+
+        if (sum % k != 0) return false;
+        Arrays.sort(nums);
+
+        return dfs(nums, new boolean[nums.length], k, 0, sum / k, nums.length - 1);
+    }
+
+    private boolean dfs(int[] nums, boolean[] visited, int k, int currentSum, int targetSum, int position) {
+        if (k == 0) return true;
+
+        if (currentSum == targetSum) return dfs(nums, visited, k - 1, 0, targetSum, nums.length - 1);
+
+        for (int i = position; i >= 0; i--) {
+            if (visited[i]) continue;
+
+            if (i + 1 < nums.length && nums[i] == nums[i + 1] && !visited[i + 1]) continue;
+
+            if (currentSum + nums[i] > targetSum) continue;
+
+            visited[i] = true;
+            if (dfs(nums, visited, k, currentSum + nums[i], targetSum, i - 1)) return true;
+            visited[i] = false;
+        }
+        return false;
+    }
+}
