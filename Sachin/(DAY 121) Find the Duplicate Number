@@ -1,0 +1,32 @@
+// QUESTION LINK: https://leetcode.com/problems/find-the-duplicate-number/
+
+// TC: O(N) SC:O(1) - OPTIMAL SOLUTION
+
+class Solution {
+
+    // TC:O(N)   SC:O(1)   - OPTIMAL APPROACH
+
+    public int findDuplicate(int[] nums) {
+        int n = nums.length;
+        int i = 0;
+
+        while (i < n) {
+            int correctIndex = nums[i] - 1;
+            if (nums[correctIndex] != nums[i]) {
+                int temp = nums[correctIndex];
+                nums[correctIndex] = nums[i];
+                nums[i] = temp;
+            } else {
+                i++;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i + 1) {
+                return nums[i];
+            }
+        }
+
+        return -1;
+    }
+}
