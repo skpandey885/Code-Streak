@@ -1,0 +1,38 @@
+// QUESTION LINK: https://leetcode.com/problems/largest-divisible-subset/
+// TC: O(N^2) SC: O(N^2) - OPTIMAL
+
+class Solution {
+    public List<Integer> largestDivisibleSubset(int[] nums) {
+        List<List<Integer>> arr = new ArrayList<>();
+
+        Arrays.sort(nums);
+        int n = nums.length;
+
+        int omax = 0;
+        List<Integer> omaxa = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            int max = 0;
+            List<Integer> ls = new ArrayList<>();
+            for (int j = 0; j < i; j++) {
+                if (nums[i] % nums[j] == 0 || nums[j] % nums[i] == 0) {
+                    if (arr.get(j).size() > max) {
+                        max = arr.get(j).size();
+                        ls = new ArrayList(arr.get(j));
+                    }
+                }
+            }
+
+            ls.add(nums[i]);
+
+            if (ls.size() > omax) {
+                omax = ls.size();
+                omaxa = ls;
+            }
+
+            arr.add(ls);
+        }
+
+        return omaxa;
+    }
+}
