@@ -1,0 +1,22 @@
+// QUESTION LINK: https://leetcode.com/problems/valid-parentheses/
+
+class Solution {
+
+    public boolean isValid(String s) {
+        Stack<Character> res = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '[') {
+                res.push(c);
+            } else {
+                if (!res.empty()) {
+                    if (c == ')' & res.peek() == '(') res.pop(); else if (c == '}' & res.peek() == '{') res.pop(); else if (c == ']' & res.peek() == '[') res.pop(); else return false;
+                } else {
+                    return false;
+                }
+            }
+        }
+        if (res.empty()) return true; else return false;
+    }
+}
