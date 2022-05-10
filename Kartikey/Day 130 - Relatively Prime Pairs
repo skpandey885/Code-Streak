@@ -1,0 +1,46 @@
+//https://leetcode.com/problems/3sum/
+
+
+
+class Solution {
+public:
+   map<vector<int>,int> freq;
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int n=nums.size();   
+        vector<vector<int>> result;
+        if(nums.size()==0)
+            return result;
+        sort(nums.begin(),nums.end()); e array 
+        int start,end;
+        for(int i=0;i<n-2;i++)
+        {
+            start=i+1;end=n-1;
+            while(start<end)
+            {
+                if(nums[i]+nums[start]+nums[end]==0)
+                {
+                    vector<int> temp={nums[i],nums[start],nums[end]};
+                    if(check(temp)==1)
+                        result.push_back(temp);
+                    start++;
+                    end--;
+                  
+                }
+                else if(nums[i]+nums[start]+nums[end]<0) 
+                    start++;
+                else                                                 
+                    end--;  
+            }
+        }
+        return result;
+    }
+    
+   int check(vector<int>& data)
+    {
+        if(freq.find(data)!=freq.end())
+            return 0;
+        
+        freq[data]=1;
+        return 1;
+    }
+};
