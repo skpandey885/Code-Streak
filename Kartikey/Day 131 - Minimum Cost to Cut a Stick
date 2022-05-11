@@ -1,0 +1,32 @@
+//https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
+
+class Solution {
+public:
+	int dp[102][102]={};
+	int findCost(int start,int end,vector<int>& cuts){
+		if(start+1 == end){
+			return 0;
+		}
+		if(dp[start][end]){
+			return dp[start][end]-1;
+		}
+		int minimum=100000001;
+		for(int i=start+1;i<end;i++){
+			int l = findCost(start,i,cuts);
+			int r = findCost(i,end,cuts);
+			minimum=min(minimum,cuts[end]-cuts[start]+l+r);
+		}
+		if(minimum == 100000001){
+			minimum = 0;
+		}
+		dp[start][end]=minimum+1;
+		return minimum;
+	}
+	int minCost(int n, vector<int>& cuts) {
+		cuts.push_back(0);
+		cuts.push_back(n);
+		sort(cuts.begin(),cuts.end());
+		int cost=findCost(0,cuts.size()-1,cuts);
+		return cost;
+	}
+};
