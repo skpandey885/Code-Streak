@@ -1,0 +1,28 @@
+// QUESTION LINK: https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/
+
+class Solution {
+    int max = -1;
+    TreeNode ans = null;
+    public TreeNode lcaDeepestLeaves(TreeNode root) {
+        if(lca(root,0) == 0){
+            return root;
+        }
+        
+        return ans;
+    }
+    public int lca(TreeNode root, int level){
+        if(root == null){
+            return level;
+        }
+        level++;
+        if(level > max){
+            max = level;
+        }
+        int left = lca(root.left,level);
+        int right = lca(root.right,level);
+        if(left == right && max == left && max == right){
+            ans = root;
+        }
+        return Math.max(left,right);
+    }
+}
