@@ -1,0 +1,37 @@
+// QUESTION LINK: https://leetcode.com/problems/partition-array-for-maximum-sum/
+
+class Solution {
+
+    public int maxSumAfterPartitioning(int[] arr, int k) {
+        int n = arr.length;
+        int dp[] = new int[n + 1];
+
+        for (int i = dp.length - 1; i >= 0; i--) {
+            if (i >= arr.length) {
+                dp[i] = 0;
+            } else {
+                int num = i + k;
+
+                if (num > arr.length) num = arr.length;
+
+                int ans = 0;
+
+                for (int p = i; (p < num && p < arr.length); p++) {
+                    int val = 0, sum = 0;
+
+                    sum += dp[p + 1];
+
+                    for (int j = i; j <= p; j++) val = Math.max(val, arr[j]);
+
+                    val *= (p - i + 1);
+
+                    ans = Math.max(sum + val, ans);
+                }
+
+                dp[i] = ans;
+            }
+        }
+
+        return dp[0];
+    }
+}
