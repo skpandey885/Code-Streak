@@ -1,0 +1,43 @@
+// QUESTION LINK: https://leetcode.com/problems/4sum/
+
+
+// OPTIMAL SOLUTION - TC: O(N^3)  SC:O(N*N)
+
+class Solution {
+
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        
+        Arrays.sort(nums);
+        int n = nums.length;
+
+        Map<List<Integer>, Boolean> map = new HashMap<>();
+
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                int k = j + 1, l = n - 1;
+
+                while (k < l) {
+                    int sum = nums[i] + nums[j] + nums[k] + nums[l];
+
+                    if (sum > target) {
+                        l--;
+                    } else if (sum < target) {
+                        k++;
+                    } else {
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(nums[i]);
+                        temp.add(nums[j]);
+                        temp.add(nums[k]);
+                        temp.add(nums[l]);
+                        map.put(temp, true);
+
+                        l--;
+                        k++;
+                    }
+                }
+            }
+        }
+
+        return new ArrayList(map.keySet());
+    }
+}
