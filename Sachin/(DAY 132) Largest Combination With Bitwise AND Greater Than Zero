@@ -1,0 +1,43 @@
+// QUESTION LINK: https://leetcode.com/contest/weekly-contest-293/problems/largest-combination-with-bitwise-and-greater-than-zero/
+
+class Solution {
+    public int largestCombination(int[] candidates) {
+        return solve(candidates,candidates.length);
+    }
+    
+    
+    
+     int solve(int a[], int N)
+    {
+ 
+        int bit[] = new int[32];
+ 
+        for (int i = 0; i < N; i++) {
+           
+            int x = 31;
+            
+            while (a[i] > 0) {
+ 
+        
+                if ((int)(a[i] & 1) == (int) 1) {
+ 
+                
+                    bit[x]++;
+                }
+ 
+        
+                a[i] = a[i] >> 1;
+ 
+                x--;
+            }
+        }
+         
+        int max = Integer.MIN_VALUE;
+ 
+        for (int i = 0; i < 32; i++) {
+            max = Math.max(max, bit[i]);
+        }
+ 
+       return max;
+    }
+}
