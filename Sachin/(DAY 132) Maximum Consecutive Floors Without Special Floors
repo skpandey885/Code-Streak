@@ -1,0 +1,37 @@
+// QUESTION LINK: https://leetcode.com/contest/weekly-contest-293/problems/maximum-consecutive-floors-without-special-floors/
+
+class Solution {
+    public int maxConsecutive(int bottom, int top, int[] special) {
+     
+        Arrays.sort(special);
+        
+        int currBottom=bottom;
+        int count=0;
+        
+        if(special[0]>currBottom){
+            count=Math.max(count,special[0]-currBottom);
+        }
+        
+          currBottom=special[0]+1;
+        
+       // System.out.println(count); 
+        
+        
+        for(int i=1;i<special.length;i++){
+            if(special[i]>currBottom){
+               count=Math.max(count,special[i]-currBottom);
+            }
+              currBottom=special[i]+1;
+               
+        }
+     
+        
+         if(currBottom<top)
+         count=Math.max(count,top-currBottom+1);
+        
+        
+        return count;
+        
+        
+    }
+}
