@@ -1,0 +1,28 @@
+// QUESTION LINK: https://leetcode.com/problems/number-of-ways-to-split-array/
+
+OPTIMAL SOLUTION - TC:O(N) SC:O(N)
+
+class Solution {
+
+    public int waysToSplitArray(int[] nums) {
+        int n = nums.length;
+
+        long[] pref = new long[n];
+        pref[0] = nums[0];
+
+        for (int i = 1; i < n; i++) {
+            pref[i] = pref[i - 1] + nums[i];
+        }
+
+        int count = 0;
+
+        for (int i = 0; i < n - 1; i++) {
+            long sum1 = pref[i];
+            long sum2 = pref[n - 1] - pref[i];
+
+            if (sum1 >= sum2) count++;
+        }
+
+        return count;
+    }
+}
