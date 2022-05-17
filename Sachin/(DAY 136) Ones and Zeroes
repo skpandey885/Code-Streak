@@ -1,0 +1,52 @@
+// QUESTION LINK: https://leetcode.com/problems/ones-and-zeroes/
+
+
+class Solution {
+
+    public int findMaxForm(String[] strs, int m, int n) {
+        
+        int x=m+10,y=n+10,z=strs.length+10;
+        
+        
+        int dp[][][]=new int[x][y][z];
+        
+        for(int i=0;i<x;i++){
+            for(int j=0;j<y;j++){
+                for(int k=0;k<z;k++){
+                    dp[i][j][k]=-1;
+                }
+            }
+        }
+        
+        return solve(strs, m, n, strs.length,dp);
+    }
+
+    int solve(String str[], int m, int n, int len, int dp[][][]) {
+        if ((m == 0 && n == 0) || len == 0) return 0;
+        
+        if(dp[m][n][len]!=-1)
+            return dp[m][n][len];
+        
+        int zeroCount = count(str[len - 1], '0');
+        int oneCount = count(str[len - 1], '1');
+
+        int b = solve(str, m, n, len - 1,dp);
+
+        if (zeroCount <= m && oneCount <= n) {
+            int a = 1 + solve(str, m - zeroCount, n - oneCount, len - 1,dp);
+            return dp[m][n][len]=Math.max(a, b);
+        }
+
+        return dp[m][n][len]=b;
+    }
+
+    int count(String s, char c) {
+        int cc = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == c) cc++;
+        }
+
+        return cc;
+    }
+}
