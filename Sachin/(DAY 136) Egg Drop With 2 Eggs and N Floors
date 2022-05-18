@@ -1,0 +1,35 @@
+// QUESTION LINK: https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
+
+
+class Solution {
+
+    public int twoEggDrop(int n) {
+        return superEggDrop(2, n);
+    }
+
+    public int superEggDrop(int e, int n) {
+        int dp[][] = new int[e + 1][n + 1];
+
+        for (int i = 0; i < dp.length; i++) {
+            for (int j = 0; j < dp[i].length; j++) {
+                if (i == 1) {
+                    dp[i][j] = j;
+                } else if (i == 0) {
+                    dp[i][j] = 0;
+                } else if (j == 0 || j == 1) {
+                    dp[i][j] = j;
+                } else {
+                    int min = Integer.MAX_VALUE;
+                    for (int k = 1; k <= j; k++) {
+                        int max = Math.max(dp[i - 1][k - 1], dp[i][j - k]);
+                        min = Math.min(min, max);
+                    }
+
+                    dp[i][j] = (min + 1);
+                }
+            }
+        }
+
+        return dp[e][n];
+    }
+}
