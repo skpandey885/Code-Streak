@@ -1,0 +1,29 @@
+// QUESTION LINK: https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks/
+
+class Solution {
+
+    public int maximumBags(int[] capacity, int[] rock, int adr) {
+        int n = capacity.length;
+
+        int arr[][] = new int[n][3];
+
+        for (int i = 0; i < n; i++) {
+            arr[i][0] = capacity[i] - rock[i];
+            arr[i][1] = capacity[i];
+            arr[i][2] = rock[i];
+        }
+
+        int count = 0;
+
+        Arrays.sort(arr, (a, b) -> (a[0] - b[0]));
+
+        for (int[] j : arr) {
+            if ((j[1] - j[2]) <= adr) {
+                count++;
+                adr -= (j[1] - j[2]);
+            }
+        }
+
+        return count;
+    }
+}
