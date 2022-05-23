@@ -1,0 +1,35 @@
+// QUESTION LINK: https://leetcode.com/problems/maximum-sum-circular-subarray/
+
+
+
+class Solution {
+
+    public int maxSubarraySumCircular(int[] nums) {
+        int last = 0;
+        int sum = 0;
+
+        int maxNonCircular = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            last += nums[i];
+            sum += nums[i];
+
+            maxNonCircular = Math.max(maxNonCircular, last);
+
+            if (last < 0) last = 0;
+        }
+
+        last = 0;
+        int min = 0;
+
+        for (int j = 1; j < nums.length - 1; j++) {
+            last += nums[j];
+            min = Math.min(min, last);
+
+            if (last > 0) last = 0;
+        }
+
+        int maxCircular = sum - min;
+
+        return Math.max(maxNonCircular, maxCircular);
+    }
+}
