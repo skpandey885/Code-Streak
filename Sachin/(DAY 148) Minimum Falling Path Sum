@@ -1,0 +1,42 @@
+// QUESTTION LINK: https://leetcode.com/problems/minimum-falling-path-sum/
+
+
+
+
+class Solution {
+
+    public int minFallingPathSum(int[][] matrix) {
+        int min = Integer.MAX_VALUE;
+
+        int dp[][]=new int[matrix.length+1][matrix[0].length+1];
+        
+        for(int i[]: dp)
+            Arrays.fill(i,-1);
+        
+        
+        for (int j = 0; j < matrix[0].length; j++) {
+            min = Math.min(min, solve(0, j, matrix, matrix.length, matrix[0].length,dp));
+        }
+
+        return min;
+    }
+
+    int solve(int i, int j, int matrix[][], int m, int n, int dp[][]) {
+        
+        if( j >= n || j < 0)
+            return 10000000;
+        
+        if (i >= m ) return 0;
+
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+        
+        int a = solve(i + 1, j - 1, matrix, m, n,dp);
+        int b = solve(i + 1, j, matrix, m, n,dp);
+        int c = solve(i + 1, j + 1, matrix, m, n,dp);
+
+        int min= Math.min(a, Math.min(b, c));
+        
+        return dp[i][j]=(min+matrix[i][j]);
+    }
+}
