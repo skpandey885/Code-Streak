@@ -1,0 +1,22 @@
+// QUESTION LINK: https://leetcode.com/problems/triangle/
+
+
+class Solution {
+    int[][] memo;
+
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int baseSize = triangle.get(triangle.size() - 1).size();
+        memo = new int[baseSize][baseSize];
+        for (int[] m : memo) Arrays.fill(m, Integer.MAX_VALUE);
+        return dfs(triangle, 0, 0);
+    }
+
+    private int dfs(List<List<Integer>> triangle, int i, int j) {
+        if (i >= triangle.size() || j >= triangle.get(i).size()) return 0;
+        if (memo[i][j] != Integer.MAX_VALUE) return memo[i][j];
+        int down = dfs(triangle, i + 1, j);
+        int downRight = dfs(triangle, i + 1, j + 1);
+        memo[i][j] = triangle.get(i).get(j) + Math.min(down, downRight);
+        return memo[i][j];
+    }
+}
