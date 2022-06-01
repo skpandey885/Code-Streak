@@ -1,0 +1,54 @@
+// QUESTION LINK: https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+
+    public TreeNode bstToGst(TreeNode root) {
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        trav(root, arr);
+
+        int nn[] = { 0 };
+        for (int i : arr) nn[0] += i;
+
+        solve(root, arr, nn);
+        return root;
+    }
+
+    void solve(TreeNode root, ArrayList<Integer> arr, int nn[]) {
+        if (root == null) return;
+
+        solve(root.left, arr, nn);
+
+        int num = nn[0];
+        nn[0] -= root.val;
+        root.val = num;
+
+        solve(root.right, arr, nn);
+    }
+
+    void trav(TreeNode root, ArrayList<Integer> arr) {
+        if (root == null) return;
+
+        trav(root.left, arr);
+        arr.add(root.val);
+        trav(root.right, arr);
+    }
+}
