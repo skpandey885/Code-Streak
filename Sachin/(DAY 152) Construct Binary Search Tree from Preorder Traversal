@@ -1,0 +1,54 @@
+// QUESTION LINK: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode bstFromPreorder(int[] preorder) {
+        
+        int visited[]=new int[preorder.length];
+        
+        return solve(0,0,preorder.length-1, preorder,visited);
+    }
+    
+    TreeNode solve(int idx, int left, int right, int p[], int visited[]){
+       
+        if(idx>right || visited[idx]==1)
+            return null;
+        
+    
+        int k=idx+1;
+
+        while(k<=right && p[k]>p[idx]  )
+           k++;
+        
+        int l=idx+1;
+        
+        while(l<=right && p[l]<p[idx] )
+            l++;
+
+        visited[idx]=1;
+        
+        TreeNode curr=new TreeNode(p[idx]);
+        curr.left=solve(k,k,l-1,p,visited);
+        curr.right=solve(l,l,right,p,visited);
+        
+    return curr;
+        
+    }
+    
+    
+}
