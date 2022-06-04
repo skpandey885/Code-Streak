@@ -1,0 +1,113 @@
+// QUESTION LINK: https://www.codingninjas.com/codestudio/problems/implement-trie_1387095?leftPanelTab=0
+
+
+public class Trie {
+    Node root;
+    public Trie() {
+       root=new Node();
+    }
+
+    public void insert(String word) {
+        Node dummy=root;
+     for(int i=0;i<word.length();i++){
+         char ch=word.charAt(i);
+         if(dummy.containsKey(ch)==false){
+             dummy.put(ch,new Node());
+         }
+         
+         dummy=dummy.get(ch);
+         dummy.increasePrefixCount();
+     }
+        dummy.increaseEndCount();
+    }
+
+    public int countWordsEqualTo(String word) {
+           Node dummy=root;
+     
+        for(int i=0;i<word.length();i++){
+         char ch=word.charAt(i);
+         if(dummy.containsKey(ch)){
+          dummy=dummy.get(ch);
+         }else{
+             return 0;
+         }  
+     }
+        return dummy.endCount;
+    }
+
+    
+
+    public int countWordsStartingWith(String word) {
+       
+           Node dummy=root;
+     
+        for(int i=0;i<word.length();i++){
+         char ch=word.charAt(i);
+       if(dummy.containsKey(ch)){
+          dummy=dummy.get(ch);
+         }else{
+             return 0;
+         }  
+     }
+       
+        return dummy.prefixCount;
+        
+    }
+
+    public void erase(String word) {
+     Node dummy=root;
+     
+      for(int i=0;i<word.length();i++){
+         char ch=word.charAt(i);
+       if(dummy.containsKey(ch)){
+          dummy=dummy.get(ch);
+         }else{
+             return;
+         }
+          dummy.decreasePrefixCount();
+     }
+        dummy.decreaseEndCount();
+        
+    }
+
+}
+
+   class Node{
+       Node[] arr;
+       int prefixCount;
+       int endCount;
+       
+       Node(){
+           arr=new Node[26];
+           prefixCount=0;
+           endCount=0;
+       }
+ 
+       boolean containsKey(char ch){
+           return arr[ch-'a']!=null;
+       }
+           
+       void put(char ch, Node num){
+           arr[ch-'a']=num;
+       }       
+         
+      Node get(char ch){
+            return arr[ch-'a'];
+      }   
+                      
+       void increasePrefixCount() {
+           prefixCount++;
+       }   
+                      
+      void increaseEndCount() {
+           endCount++;
+       } 
+       
+       void decreasePrefixCount(){
+           prefixCount--;
+       }
+       
+         void decreaseEndCount(){
+           endCount--;
+       }
+   }
