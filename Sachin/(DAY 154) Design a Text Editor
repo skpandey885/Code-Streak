@@ -1,0 +1,59 @@
+// QUESTION LINK: https://leetcode.com/problems/design-a-text-editor/
+
+class TextEditor {
+    StringBuilder sb;
+    int cursor;
+
+    public TextEditor() {
+        sb = new StringBuilder();
+        cursor = 0;
+    }
+
+    public void addText(String text) {
+        sb.insert(cursor, text);
+        cursor += text.length();
+    }
+
+    public int deleteText(int k) {
+        int p = cursor - k;
+
+        if (p < 0) p = 0;
+
+        sb.delete(p, cursor);
+        int numOfTextDeleted = Math.min(cursor, k);
+
+        cursor -= k;
+
+        if (cursor < 0) cursor = 0;
+
+        return numOfTextDeleted;
+    }
+
+    public String cursorLeft(int q) {
+        cursor -= q;
+
+        if (cursor < 0) cursor = 0;
+
+        if (cursor == 0) return "";
+
+        int min = Math.min(10, cursor);
+
+        int a = cursor - 10;
+        if (a < 0) a = 0;
+
+        return sb.substring(a, cursor);
+    }
+
+    public String cursorRight(int q) {
+        cursor += q;
+
+        if (cursor > sb.length()) cursor = sb.length();
+
+        int min = Math.min(10, cursor);
+
+        int a = cursor - 10;
+        if (a < 0) a = 0;
+
+        return sb.substring(a, cursor);
+    }
+}
