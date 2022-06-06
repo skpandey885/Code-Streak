@@ -1,0 +1,54 @@
+// QUESTION LINK: https://leetcode.com/problems/maximal-rectangle/
+
+
+class Solution {
+
+    public int maximalRectangle(char[][] matrix) {
+        int maxArea = 0;
+
+        int n = matrix.length, m = matrix[0].length;
+
+        int breadthMat[][] = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                breadthMat[i][j] = findBreadth(i, j, matrix);
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int minBreadth = Integer.MAX_VALUE;
+
+                if (matrix[i][j] == '1') {
+                    int k = i;
+
+                    int h = 0;
+
+                    while (k < n && matrix[k][j] == '1') {
+                        minBreadth = Math.min(breadthMat[k][j], minBreadth);
+                        h++;
+                        k++;
+
+                        double p = Math.max(minBreadth * h, maxArea);
+                        maxArea = (int) p;
+                    }
+                }
+            }
+        }
+
+        return maxArea;
+    }
+
+    int findBreadth(int i, int j, char matrix[][]) {
+        int k = j;
+
+        int h = 0;
+
+        while (k < matrix[0].length && matrix[i][k] == '1') {
+            h++;
+            k++;
+        }
+
+        return h;
+    }
+}
