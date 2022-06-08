@@ -1,0 +1,50 @@
+// QUESTION LINK: https://leetcode.com/problems/count-unguarded-cells-in-the-grid/
+
+class Solution {
+
+    public int countUnguarded(int m, int n, int[][] guards, int[][] walls) {
+        String arr[][] = new String[m][n];
+
+        for (int i[] : guards) arr[i[0]][i[1]] = "G";
+
+        for (int i[] : walls) arr[i[0]][i[1]] = "W";
+
+        for (int ans[] : guards) {
+            int i = ans[0];
+            int j = ans[1];
+
+            int a = i + 1;
+
+            while (a < m && arr[a][j] != "W" && arr[a][j] != "G") {
+                arr[a][j] = "-";
+                a++;
+            }
+
+            a = i - 1;
+
+            while (a >= 0 && arr[a][j] != "W" && arr[a][j] != "G") {
+                arr[a][j] = "-";
+                a--;
+            }
+
+            a = j + 1;
+
+            while (a < n && arr[i][a] != "W" && arr[i][a] != "G") {
+                arr[i][a] = "-";
+                a++;
+            }
+
+            a = j - 1;
+
+            while (a >= 0 && arr[i][a] != "W" && arr[i][a] != "G") {
+                arr[i][a] = "-";
+                a--;
+            }
+        }
+
+        int count = 0;
+        for (int i = 0; i < m; i++) for (int j = 0; j < n; j++) if (arr[i][j] == null) count++;
+
+        return count;
+    }
+}
