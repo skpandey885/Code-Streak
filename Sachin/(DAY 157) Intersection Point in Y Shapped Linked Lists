@@ -1,0 +1,71 @@
+class Intersect
+{
+
+	int intersectPoint(Node head1, Node head2)
+	{
+        int a=0;
+        int b=0;
+        
+        Node x=head1;
+        Node y=head2;
+        
+        while(x!=null){
+            a++;
+            x=x.next;
+        }
+        
+        
+          while(y!=null){
+            b++;
+            y=y.next;
+        }
+        
+        Node ans=null;
+        int diff=0;
+        int flag=1;
+        
+        if(a>b){
+            diff=a-b;
+            ans=head1;
+            flag=0;
+        }else{
+            diff=b-a;
+            ans=head2;
+        }
+        
+       
+        
+        
+        while(diff>0){
+          diff--;
+          ans=ans.next;
+        }
+        
+        if(flag==1){
+            
+            while(head1!=ans){
+                ans=ans.next;
+                head1=head1.next;
+            }
+            
+            return ans.data;
+            
+            
+            
+        }else{
+
+             while(head2!=ans){
+                ans=ans.next;
+                head2=head2.next;
+            }
+            
+            return ans.data;
+  
+            
+        }
+	}
+	
+	
+	
+	
+}
