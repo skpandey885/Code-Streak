@@ -1,0 +1,31 @@
+// QUESTION LINK: https://leetcode.com/problems/minimum-path-cost-in-a-grid/
+
+class Solution {
+
+    public int minPathCost(int[][] grid, int[][] moveCost) {
+        int dp[][] = new int[grid.length + 1][grid[0].length + 1];
+
+        for (int[] i : dp) Arrays.fill(i, -1);
+
+        int min = Integer.MAX_VALUE;
+        for (int j = 0; j < grid[0].length; j++) min = Math.min(min, solve(0, j, grid, grid.length, grid[0].length, moveCost, dp));
+        return min;
+    }
+
+    int solve(int i, int j, int[][] grid, int m, int n, int moveCast[][], int dp[][]) {
+        if (i >= m - 1) {
+            return grid[i][j];
+        }
+
+        if (dp[i][j] != -1) return dp[i][j];
+
+        int min = Integer.MAX_VALUE;
+        int num = grid[i][j];
+        for (int k = 0; k < grid[0].length; k++) {
+            int res = moveCast[num][k] + num + solve(i + 1, k, grid, m, n, moveCast, dp);
+            min = Math.min(min, res);
+        }
+
+        return dp[i][j] = min;
+    }
+}
